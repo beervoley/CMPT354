@@ -1,4 +1,4 @@
-package API.DBClasses;
+package API.Model;
 
 /**
  * Created by vsevolod on 2018-07-23.

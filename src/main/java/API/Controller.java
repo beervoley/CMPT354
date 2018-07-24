@@ -4,6 +4,7 @@ package API;
  * Created by vsevolod on 2018-05-17.
  */
 
+import API.DBCommunication.SQLDB;
 import Model.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

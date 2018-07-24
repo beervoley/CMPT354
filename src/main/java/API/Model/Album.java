@@ -1,4 +1,4 @@
-package API.DBClasses;
+package API.Model;
 
 /**
  * Created by vsevolod on 2018-07-23.
@@ -8,7 +8,7 @@ public class Album {
     private int AlbumID;
     private String AlbumName;
     private int AlbumYear;
-    private String ArtistID;
+    private int ArtistID;
     private float Price;
     private String ArtistName;
 
@@ -28,7 +28,7 @@ public class Album {
         return AlbumYear;
     }
 
-    public String getArtistID() {
+    public int getArtistID() {
         return ArtistID;
     }
 
@@ -36,7 +36,7 @@ public class Album {
         return Price;
     }
 
-    public Album(int albumID, String albumName, int albumYear, String artistID, float price) {
+    public Album(int albumID, String albumName, int albumYear, int artistID, float price) {
         AlbumID = albumID;
         AlbumName = albumName;
         AlbumYear = albumYear;

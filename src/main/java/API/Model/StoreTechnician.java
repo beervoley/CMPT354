@@ -1,9 +1,9 @@
-package API.DBClasses;
+package API.Model;
 
 /**
  * Created by vsevolod on 2018-07-23.
  */
-public class Manager {
+public class StoreTechnician {
 
     private int EmployeeID;
     private String EmployeeName;
@@ -16,7 +16,7 @@ public class Manager {
         return EmployeeName;
     }
 
-    public Manager(int employeeID, String employeeName) {
+    public StoreTechnician(int employeeID, String employeeName) {
         EmployeeID = employeeID;
         EmployeeName = employeeName;
     }

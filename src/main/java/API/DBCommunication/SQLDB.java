@@ -7,17 +7,15 @@
  *
  */
 
-package Model;
+package API.DBCommunication;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.apache.catalina.Store;
+import API.Model.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class SQLDB {
 
@@ -131,12 +129,7 @@ public class SQLDB {
             int customerID = rs.getInt("CustomerID");
             String customerName = rs.getString("CustomerName");
             int referralCount = rs.getInt("ReferralCount");
-            int r1 = rs.getInt("r1");
-            int r2 = rs.getInt("r2");
-            int r3 = rs.getInt("r3");
-            int r4 = rs.getInt("r4");
-            int r5 = rs.getInt("r5");
-            customers.add(new Customer(customerID,customerName,referralCount,r1,r2,r3,r4,r5));
+            customers.add(new Customer(customerID,customerName,referralCount));
 
         }
         return customers;
@@ -184,7 +177,7 @@ public class SQLDB {
             int receiptID = rs.getInt("receiptID");
             int albumID = rs.getInt("albumID");
             int customerID = rs.getInt("customerID");
-            Date date = rs.getDate("date");
+            String date = rs.getString("date");
             receipts.add(new Receipt(receiptID,albumID,customerID,date));
 
         }
@@ -210,7 +203,7 @@ public class SQLDB {
 
         }
         else{
-            return new Album();
+            return null;
         }
     }
 
@@ -226,7 +219,7 @@ public class SQLDB {
             return new Artist(artistID,artistName);
         }
         else{
-            return new Artist();
+            return null;
         }
     }
 
@@ -239,15 +232,10 @@ public class SQLDB {
             int customerID = rs.getInt("CustomerID");
             String customerName = rs.getString("CustomerName");
             int referralCount = rs.getInt("ReferralCount");
-            int r1 = rs.getInt("r1");
-            int r2 = rs.getInt("r2");
-            int r3 = rs.getInt("r3");
-            int r4 = rs.getInt("r4");
-            int r5 = rs.getInt("r5");
-            return new Customer(customerID,customerName,referralCount,r1,r2,r3,r4,r5);
+            return new Customer(customerID,customerName,referralCount);
         }
         else{
-            return new Customer();
+            return null;
         }
     }
 
@@ -262,7 +250,7 @@ public class SQLDB {
             return new Manager(employeeID,employeeName);
         }
         else{
-            return new Manager();
+            return null;
         }
     }
 
@@ -277,7 +265,7 @@ public class SQLDB {
             return new StoreTechnician(employeeID,employeeName);
         }
         else{
-            return new StoreTechnician();
+            return null;
         }
     }
 
@@ -290,11 +278,11 @@ public class SQLDB {
             int receiptID = rs.getInt("receiptID");
             int albumID = rs.getInt("albumID");
             int customerID = rs.getInt("customerID");
-            Date date = rs.getDate("date");
+            String date = rs.getString("date");
             return new Receipt(receiptID, albumID, customerID, date);
         }
         else{
-            return new Receipt();
+            return null;
         }
     }
 

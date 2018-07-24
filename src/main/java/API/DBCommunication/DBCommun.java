@@ -1,6 +1,6 @@
 package API.DBCommunication;
 
-import API.DBClasses.Album;
+import API.Model.Album;
 import com.google.gson.Gson;
 
 import java.sql.Connection;
