@@ -12,17 +12,34 @@ import java.util.Map;
 
 @RestController
 public class Controller {
+    private static String SEARCH_TYPE_KEY = "srch";
+    private enum SEARCH_TYPES {
+        BYARTISTNAME,
+        BYARTISTLASTNAME,
+        BYARTISTFULLNAME,
+        BYALBUMNAME
+    }
 
 
     @RequestMapping("/getCD")
     public String getCD(@RequestParam Map<String, String> params) {
 
-        String toReturn = "";
+        switch (SEARCH_TYPES.valueOf(params.get(SEARCH_TYPE_KEY))) {
+            case BYARTISTNAME:
+                break;
+            case BYARTISTLASTNAME:
+                break;
+            case BYARTISTFULLNAME:
+                break;
+            case BYALBUMNAME:
+                break;
+            default:
+                break;
 
-        for(Map.Entry entry: params.entrySet()) {
-            toReturn += (entry.getValue().toString()) + " ";
         }
-        return toReturn;
+
+        return "";
     }
+
 
 }
