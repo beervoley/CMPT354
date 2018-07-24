@@ -1,0 +1,84 @@
+CREATE TABLE Manager (EmployeeID INT PRIMARY KEY,
+                      EmployeeName CHAR(50) NOT NULL);
+
+CREATE TABLE StoreTechnician (EmployeeID INT PRIMARY KEY,
+                      EmployeeName CHAR(50) NOT NULL);
+
+CREATE TABLE Artist (ArtistID INT PRIMARY KEY,
+                     ArtistName CHAR(50) NOT NULL);
+
+CREATE TABLE Album (AlbumID INT PRIMARY KEY,
+                    AlbumName CHAR(50),
+                    AlbumYear INT,
+                    ArtistID INT DEFAULT 0,
+                    Price REAL DEFAULT 0,
+                    FOREIGN KEY (ArtistID) REFERENCES Artist (ArtistID)
+                    ON UPDATE CASCADE ON DELETE SET DEFAULT);
+
+DROP TABLE Customer;
+
+CREATE TABLE Customer (CustomerID INT PRIMARY KEY,
+                       CustomerName CHAR(50) NOT NULL,
+                       ReferalCount INT DEFAULT 0);
+
+CREATE TABLE Receipt (ReceiptID INT PRIMARY KEY,
+                      AlbumID INT DEFAULT 0,
+                      CustomerID INT DEFAULT 0,
+                      Date DATE,
+                      FOREIGN KEY (AlbumID) References Album (AlbumID)
+                      ON UPDATE CASCADE ON DELETE SET DEFAULT,
+                      FOREIGN KEY (CustomerID) References Customer (CustomerID)
+                      ON UPDATE CASCADE ON DELETE SET DEFAULT);
+
+
+
+// INSERTING
+
+INSERT INTO Manager (EmployeeID, EmployeeName)
+VALUES
+(1,'Paul');
+(2,'Jake'),
+(3,'Dhoni');
+(4,'Jarvis');
+(5,'Jake');
+
+INSERT INTO StoreTechnician (EmployeeID, EmployeeName)
+VALUES
+(2, 'Jamal'),
+(3, 'Vesuvius'),
+(4, 'Gnome'),
+(5, 'Faruq');
+
+INSERT INTO Artist (ArtistID, ArtistName)
+VALUES
+(1,'1200 Micrograms'),
+(2,'Daft Punk'),
+(3,'Lil Pump'),
+(4,'Skrillex'),
+(5,'Major Lazer');
+
+
+INSERT INTO Album (AlbumID, AlbumName, AlbumYear, AristID, Price)
+VALUES
+(1,'Alive', 1998, 2,9.99),
+(2,'The Time Machine', 2004,1,5.99),
+(3,'Lil Pump',2017,3,19.99),
+(4,'Scary Monsters and Nice Sprites',2010,4,5.99),
+(5,'Free The Universe',2013,5,6.99);
+
+
+INSERT INTO Customer (CustomerID, CustomerName, ReferalCount)
+VALUES
+(1,'John Smith',2l),
+(2,'Jessica Jones',3),
+(3,'Hila Klein',2),
+(4,'Jane Austen',1),
+(5,'Jordan C', 0);
+
+INSERT INTO Receipt (ReceiptID, AlbumID, CustomerID, Date)
+VALUES
+(1,1,4,'2017-06-11'),
+(2,4,1,'2017-07-13'),
+(3,3,2,'2017-11-12'),
+(4,5,3,'2018-01-12'),
+(5,2,5,'2018-05-16');
