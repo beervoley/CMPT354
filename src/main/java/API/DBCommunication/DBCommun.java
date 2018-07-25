@@ -2,6 +2,7 @@ package API.DBCommunication;
 
 import API.Model.Album;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,37 +18,44 @@ public class DBCommun {
 
 
     public static String getCDSByFirstName(String name) {
-        String query = getAlbumQueryByName(name);
-        ResultSet rset = runQuery(query);
+        ResultSet rset = runQuery(Queries.getAlbumByArtistNameQuery(name));
         return buildGSON(rset);
-
     }
 
-    private static String buildGSON(ResultSet rset) {
+    private static List<Album> getAlbumList(ResultSet rset) {
+
         List<Album> albumList = new ArrayList<>();
         try {
             while (rset.next()) {
-               albumList.add(new Album(rset.getString("AlbumName"),
-                       rset.getInt("AlbumYear"), rset.getFloat("Price"),
-                       "")
-               );
+
+                albumList.add(new Album(rset.getString("AlbumName").trim(),
+                        rset.getInt("AlbumYear"), rset.getFloat("Price"),
+                        getArtistNameByID(rset.getInt("ArtistID")))
+                );
             }
-            Gson gson = new Gson();
-            return gson.toJson(albumList);
+            return albumList;
         } catch (Exception ex) {
-            System.out.println("During building a JSON response: " + ex.toString());
+            System.out.println("Error during building a JSON: " + ex.toString());
         }
         return null;
     }
 
-    private static String getAlbumQueryByName(String name) {
-        String query = "SELECT AlbumName, AlbumYear, Price " +
-                "FROM Album " +
-                "WHERE ArtistID IN (SELECT ArtistID FROM Artist WHERE ArtistName LIKE '%"
-                + name + "%')" +
-                ";";
-        return query;
+    private static String getArtistNameByID(int artistID) {
+        ResultSet rs = runQuery(Queries.getArtistNamyByIDQuery(artistID));
+        return "";
     }
+
+
+
+    private static String buildGSON(ResultSet rset) {
+        List<Album> albumList = getAlbumList(rset);
+        if(albumList != null) {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(albumList);
+        }
+        return "";
+    }
+
 
     public static ResultSet runQuery(String query) {
         Connection connection = getConnection();

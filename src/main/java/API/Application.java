@@ -4,6 +4,8 @@
 
 package API;
 
+import API.DBCommunication.DBCommun;
+import API.DBCommunication.Queries;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -15,8 +17,8 @@ public class Application {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-
-        SpringApplication.run(Application.class, args);
+        System.out.println(DBCommun.runQuery(Queries.getAlbumByArtistNameASCQuery("")));
+        //SpringApplication.run(Application.class, args);
     }
 
 }
