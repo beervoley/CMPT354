@@ -10,11 +10,6 @@ public class Album {
     private int AlbumYear;
     private int ArtistID;
     private float Price;
-    private String ArtistName;
-
-    public String getArtistName() {
-        return ArtistName;
-    }
 
     public int getAlbumID() {
         return AlbumID;
@@ -44,10 +39,9 @@ public class Album {
         Price = price;
     }
 
-    public Album(String albumName, int albumYear, float price, String artistName) {
+    public Album(String albumName, int albumYear, float price) {
         AlbumName = albumName;
         AlbumYear = albumYear;
         Price = price;
-        ArtistName = artistName;
     }
 }

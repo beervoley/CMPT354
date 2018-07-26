@@ -1,7 +1,8 @@
 package API.DBCommunication;
 
-import API.Model.Album;
+import API.Model.*;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,29 +16,22 @@ import java.util.List;
  */
 public class DBCommun {
 
+    private static Connection getConnection() {
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            return DriverManager.getConnection("jdbc:sqlserver://den1.mssql3.gear.host;" +
+                    "user=cmpt354;" +
+                    "password=Hn9M-8K5G4~2");
+        } catch (Exception ex) {
+            System.out.println("Connection could not be establihed. Reason: " + ex.toString());
+        }
+        return null;
+    }
 
     public static String getCDSByFirstName(String name) {
         String query = getAlbumQueryByName(name);
         ResultSet rset = runQuery(query);
-        return buildGSON(rset);
-
-    }
-
-    private static String buildGSON(ResultSet rset) {
-        List<Album> albumList = new ArrayList<>();
-        try {
-            while (rset.next()) {
-               albumList.add(new Album(rset.getString("AlbumName"),
-                       rset.getInt("AlbumYear"), rset.getFloat("Price"),
-                       "")
-               );
-            }
-            Gson gson = new Gson();
-            return gson.toJson(albumList);
-        } catch (Exception ex) {
-            System.out.println("During building a JSON response: " + ex.toString());
-        }
-        return null;
+        return buildAlbumGSON(rset);
     }
 
     private static String getAlbumQueryByName(String name) {
@@ -49,7 +43,7 @@ public class DBCommun {
         return query;
     }
 
-    public static ResultSet runQuery(String query) {
+    private static ResultSet runQuery(String query) {
         Connection connection = getConnection();
         if(connection != null) {
             try {
@@ -64,14 +58,101 @@ public class DBCommun {
         return null;
     }
 
-    private static Connection getConnection() {
+    private static String buildAlbumGSON(ResultSet rset) {
+        List<Album> albumList = new ArrayList<>();
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            return DriverManager.getConnection("jdbc:sqlserver://den1.mssql3.gear.host;" +
-                    "user=cmpt354;" +
-                    "password=Hn9M-8K5G4~2");
+            while (rset.next()) {
+               albumList.add(new Album(rset.getString("AlbumName"),
+                       rset.getInt("AlbumYear"), rset.getFloat("Price"))
+               );
+            }
+            Gson gson = new Gson();
+            return gson.toJson(albumList);
         } catch (Exception ex) {
-            System.out.println("Connection could not be establihed. Reason: " + ex.toString());
+            System.out.println("During building a JSON response: " + ex.toString());
+        }
+        return null;
+    }
+
+    private static String buildArtistGSON(ResultSet rset){
+        List<Artist> artistList = new ArrayList<>();
+        try{
+            while (rset.next()) {
+                artistList.add(new Artist(rset.getInt("ArtistID"),
+                        rset.getString("AlbumName"))
+                );
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(artistList);
+        } catch (Exception ex) {
+            System.out.println("During building a JSON response: " + ex.toString());
+        }
+        return null;
+    }
+
+    private static String buildCustomerGSON(ResultSet rset){
+        List<Customer> customerList = new ArrayList<>();
+        try{
+            while (rset.next()) {
+                customerList.add(new Customer(rset.getInt("CustomerID"),
+                        rset.getString("CustomerName"),
+                        rset.getInt("ReferalCount"))
+                );
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(customerList);
+        } catch (Exception ex) {
+            System.out.println("During building a JSON response: " + ex.toString());
+        }
+        return null;
+    }
+
+    private static String buildManagerGSON(ResultSet rset) {
+        List<Manager> managerList = new ArrayList<>();
+        try {
+            while (rset.next()) {
+                managerList.add(new Manager(rset.getInt("ManagerID"),
+                        rset.getString("ManagerName"))
+                );
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(managerList);
+        } catch (Exception ex) {
+            System.out.println("During building a JSON response: " + ex.toString());
+        }
+        return null;
+    }
+
+    private static String buildStoreTechnicianGSON(ResultSet rset) {
+        List<StoreTechnician> storeTechnicianList = new ArrayList<>();
+        try {
+            while (rset.next()) {
+                storeTechnicianList.add(new StoreTechnician(rset.getInt("ManagerID"),
+                        rset.getString("ManagerName"))
+                );
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(storeTechnicianList);
+        } catch (Exception ex) {
+            System.out.println("During building a JSON response: " + ex.toString());
+        }
+        return null;
+    }
+
+    private static String buildReceiptGSON(ResultSet rset) {
+        List<Receipt> receiptList = new ArrayList<>();
+        try {
+            while (rset.next()) {
+                receiptList.add(new Receipt(rset.getInt("ReceiptID"),
+                        rset.getInt("AlbumID"),
+                        rset.getInt("CustomerID"),
+                        rset.getString("Date"))
+                );
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(receiptList);
+        } catch (Exception ex) {
+            System.out.println("During building a JSON response: " + ex.toString());
         }
         return null;
     }
