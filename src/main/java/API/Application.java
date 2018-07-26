@@ -17,7 +17,7 @@ public class Application {
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
-        System.out.println(DBCommun.runQuery(Queries.getAlbumByArtistNameASCQuery("")));
+        System.out.println(DBCommun.runQuery(Queries.getAlbumByArtistNameASCPriceQuery("Skrillex")));
         //SpringApplication.run(Application.class, args);
     }
 
