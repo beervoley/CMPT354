@@ -27,7 +27,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="margin-top: 0px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="margin-top: 0px; ">
       <div class="container">
         <a class="navbar-brand" href="#">Music Store</a>
 
@@ -41,14 +41,8 @@
                 <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html">Employees Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="login.html">Employees</a>
             </li>
           </ul>
         </div>
@@ -59,119 +53,90 @@
     <div class="container">
 
       <div class="row">
+        <div class="dropdown" style="width: 100%;  height: 50px;   text-align: center;">
+            <button onclick="myFunction()" class="dropbtn" style="position: absolute;">Search</button>
+              <div id="myDropdown" class="dropdown-content">
+                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                  <a href="#about">All</a>
+                  <a href="#base">Base</a>
+                  <a href="#blog">Blog</a>
+                  <a href="#contact">Contact</a>
+                  <a href="#custom">Custom</a>
+                  <a href="#support">Support</a>
+                  <a href="#tools">Tools</a>
+            </div>
+          </div>
+
 
         <div class="col-lg-3">
-
-        <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Search</button>
-            <div id="myDropdown" class="dropdown-content">
-              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                <a href="#about">About</a>
-                <a href="#base">Base</a>
-                <a href="#blog">Blog</a>
-                <a href="#contact">Contact</a>
-                <a href="#custom">Custom</a>
-                <a href="#support">Support</a>
-                <a href="#tools">Tools</a>
-          </div>
-        </div>
-
+          
           <h3 class="my-4">Music Genres List</h3>
           <div class="list-group">
-            <a href="#" class="list-group-item">All</a>
-            <a href="#" class="list-group-item">Alternative</a>
-            <a href="#" class="list-group-item">Blues</a>
-            <a href="#" class="list-group-item">Classical</a>
-            <a href="#" class="list-group-item">Dance</a>
-            <a href="#" class="list-group-item">Hip Hop</a>
-            <a href="#" class="list-group-item">Indie Pop</a>
-            <a href="#" class="list-group-item">Jazz</a>
+              <a href="#" class="list-group-item">Price Descending</a>
+              <a href="#" class="list-group-item">Price Ascending</a>
           </div>
-
         </div>
         <!-- /.col-lg-3 -->
-
-        <div class="col-lg-9" style="top: 30px;">
-
-          <div class="table-users">
-
-           <table id="keywords" cellspacing="0" cellpadding="0">
-            <thead>
+        <div class="col-lg-9" style="top: 30px; bottom: 40px;">
+          <div style="overflow-x:auto;">
+            <table>
               <tr>
-                <th><span>Keywords</span></th>
-                <th><span>Impressions</span></th>
-                <th><span>Clicks</span></th>
-                <th><span>CTR</span></th>
-                <th><span>Rank</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="lalign">silly tshirts</td>
-                <td>6,000</td>
-                <td>110</td>
-                <td>1.8%</td>
-                <td>22.2</td>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Points</th>
               </tr>
               <tr>
-                <td class="lalign">desktop workspace photos</td>
-                <td>2,200</td>
-                <td>500</td>
-                <td>22%</td>
-                <td>8.9</td>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
               </tr>
               <tr>
-                <td class="lalign">arrested development quotes</td>
-                <td>13,500</td>
-                <td>900</td>
-                <td>6.7%</td>
-                <td>12.0</td>
+                <td>Eve</td>
+                <td>Jackson</td>
+                <td>94</td>
+                
               </tr>
               <tr>
-                <td class="lalign">popular web series</td>
-                <td>8,700</td>
-                <td>350</td>
-                <td>4%</td>
-                <td>7.0</td>
+                <td>Adam</td>
+                <td>Johnson</td>
+                <td>67</td>
               </tr>
-              <tr>
-                <td class="lalign">2013 webapps</td>
-                <td>9,900</td>
-                <td>460</td>
-                <td>4.6%</td>
-                <td>11.5</td>
-              </tr>
-              <tr>
-                <td class="lalign">ring bananaphone</td>
-                <td>10,500</td>
-                <td>748</td>
-                <td>7.1%</td>
-                <td>17.3</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>  
-          <!-- /.row -->
-
-        </div>
+            </table>
+          </div>
+        </div> 
+      </div>
         <!-- /.col-lg-9 -->
 
-      </div>
+    </div>
       <!-- /.row -->
 
-    </div>
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-<!--         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
- -->  </div>
-      
-      <br>
-    </footer>
 
   </body>
 
 </html>
 
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDropdown");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+</script>
