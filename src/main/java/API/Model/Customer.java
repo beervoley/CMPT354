@@ -36,7 +36,7 @@ public class Customer {
     }
 
 
-    private static String buildCustomerGSON(ResultSet rset){
+    public static String buildCustomerGSON(ResultSet rset){
         List<Customer> customerList = new ArrayList<>();
         try{
             while (rset.next()) {

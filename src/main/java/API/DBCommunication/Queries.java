@@ -84,12 +84,12 @@ public class Queries {
 
     // Queries for Album Table
     public static String getAllAlbumsQuery() {
-        return "SELECT AlbumName, AlbumYear, Price, ArtistName " +
+        return "SELECT AlbumID, AlbumName, AlbumYear, Price, ArtistName " +
                 "FROM Artist, Album " +
                 "WHERE Artist.ArtistID = Album.ArtistID";
     }
     public static String getAlbumByNameQuery(String name) {
-        return String.format("SELECT ArtistID, AlbumName, AlbumYear, Price, ArtistName " +
+        return String.format("SELECT AlbumID, AlbumName, AlbumYear, Price, ArtistName " +
                 "FROM Album, Artist " +
                 "WHERE Album.AlbumName LIKE '%%%s%%' " +
                 "AND Album.ArtistID = Artist.ArtistID;", name);
@@ -152,7 +152,6 @@ public class Queries {
                 "FROM Artist " +
                 "WHERE ArtistName LIKE '%%%s%%' OR ArtistName LIKE '%%%s%%';", firstName, lastName);
     }
-
     public static String deleteArtistByIDQuery(int id) {
         return String.format("DELETE FROM Artist " +
                 "WHERE ArtistID = %d;" ,id);

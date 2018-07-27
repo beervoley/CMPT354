@@ -27,12 +27,12 @@ public class Artist {
         ArtistName = artistName;
     }
 
-    private static String buildArtistGSON(ResultSet rset){
+    public static String buildArtistGSON(ResultSet rset){
         List<Artist> artistList = new ArrayList<>();
         try{
             while (rset.next()) {
                 artistList.add(new Artist(rset.getInt("ArtistID"),
-                        rset.getString("AlbumName").trim())
+                        rset.getString("ArtistName").trim())
                 );
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

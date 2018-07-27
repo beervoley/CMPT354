@@ -28,12 +28,12 @@ public class Manager {
         EmployeeName = employeeName;
     }
 
-    private static String buildManagerGSON(ResultSet rset) {
+    public static String buildManagerGSON(ResultSet rset) {
         List<Manager> managerList = new ArrayList<>();
         try {
             while (rset.next()) {
-                managerList.add(new Manager(rset.getInt("ManagerID"),
-                        rset.getString("ManagerName").trim())
+                managerList.add(new Manager(rset.getInt("EmployeeID"),
+                        rset.getString("EmployeeName").trim())
                 );
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

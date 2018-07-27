@@ -28,12 +28,12 @@ public class StoreTechnician {
         EmployeeName = employeeName;
     }
 
-    private static String buildStoreTechnicianGSON(ResultSet rset) {
+    public static String buildStoreTechnicianGSON(ResultSet rset) {
         List<StoreTechnician> storeTechnicianList = new ArrayList<>();
         try {
             while (rset.next()) {
-                storeTechnicianList.add(new StoreTechnician(rset.getInt("ManagerID"),
-                        rset.getString("ManagerName").trim())
+                storeTechnicianList.add(new StoreTechnician(rset.getInt("EmployeeID"),
+                        rset.getString("EmployeeName").trim())
                 );
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
