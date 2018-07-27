@@ -139,9 +139,20 @@ public class Queries {
         return "SELECT * " +
                 "FROM ARTIST;";
     }
-    public static String getArtistNamyByIDQuery(int artistID) {
-        return String.format("SELECT ArtistName FROM Artist WHERE ArtistID = %d;", artistID);
+    public static String getArtistByIDQuery(int artistID) {
+        return String.format("SELECT * FROM Artist WHERE ArtistID = %d;", artistID);
     }
+    public static String getArtistByFirstNameQuery(String name) {
+        return String.format("SELECT * " +
+                "FROM Artist " +
+                "WHERE ArtistName LIKE '%%%s%%';", name);
+    }
+    public static String getArtistByFullNameQuery(String firstName, String lastName) {
+        return String.format("SELECT * " +
+                "FROM Artist " +
+                "WHERE ArtistName LIKE '%%%s%%' OR ArtistName LIKE '%%%s%%';", firstName, lastName);
+    }
+
     public static String deleteArtistByIDQuery(int id) {
         return String.format("DELETE FROM Artist " +
                 "WHERE ArtistID = %d;" ,id);
