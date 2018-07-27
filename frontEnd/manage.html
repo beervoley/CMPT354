@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Music Store Homepage - Start Shopping</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Javascript -->
+    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+    
+    <!-- Custom styles for this template -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+    <link href="customerSearch.css" rel="stylesheet">
+    <link href="manage.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://tablesorter.com/jquery.tablesorter.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="margin-top: 0px;">
+      <div class="container">
+        <a class="navbar-brand" href="#">Music Store</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Employees Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-lg-3">
+
+        <div class="dropdown">
+          <button onclick="myFunction()" class="dropbtn">Search</button>
+            <div id="myDropdown" class="dropdown-content">
+              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                <a href="#about">About</a>
+                <a href="#base">Base</a>
+                <a href="#blog">Blog</a>
+                <a href="#contact">Contact</a>
+                <a href="#custom">Custom</a>
+                <a href="#support">Support</a>
+                <a href="#tools">Tools</a>
+          </div>
+        </div>
+
+          <h3 class="my-4">Music Genres List</h3>
+          <div class="list-group">
+            <a href="#" class="list-group-item">All</a>
+            <a href="#" class="list-group-item">Alternative</a>
+            <a href="#" class="list-group-item">Blues</a>
+            <a href="#" class="list-group-item">Classical</a>
+            <a href="#" class="list-group-item">Dance</a>
+            <a href="#" class="list-group-item">Hip Hop</a>
+            <a href="#" class="list-group-item">Indie Pop</a>
+            <a href="#" class="list-group-item">Jazz</a>
+          </div>
+
+        </div>
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-9" style="top: 30px;">
+
+          <div class="table-users">
+
+           <table id="keywords" cellspacing="0" cellpadding="0">
+            <thead>
+              <tr>
+                <th><span>Keywords</span></th>
+                <th><span>Impressions</span></th>
+                <th><span>Clicks</span></th>
+                <th><span>CTR</span></th>
+                <th><span>Rank</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="lalign">silly tshirts</td>
+                <td>6,000</td>
+                <td>110</td>
+                <td>1.8%</td>
+                <td>22.2</td>
+              </tr>
+              <tr>
+                <td class="lalign">desktop workspace photos</td>
+                <td>2,200</td>
+                <td>500</td>
+                <td>22%</td>
+                <td>8.9</td>
+              </tr>
+              <tr>
+                <td class="lalign">arrested development quotes</td>
+                <td>13,500</td>
+                <td>900</td>
+                <td>6.7%</td>
+                <td>12.0</td>
+              </tr>
+              <tr>
+                <td class="lalign">popular web series</td>
+                <td>8,700</td>
+                <td>350</td>
+                <td>4%</td>
+                <td>7.0</td>
+              </tr>
+              <tr>
+                <td class="lalign">2013 webapps</td>
+                <td>9,900</td>
+                <td>460</td>
+                <td>4.6%</td>
+                <td>11.5</td>
+              </tr>
+              <tr>
+                <td class="lalign">ring bananaphone</td>
+                <td>10,500</td>
+                <td>748</td>
+                <td>7.1%</td>
+                <td>17.3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>  
+          <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+<!--         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+ -->  </div>
+      
+      <br>
+    </footer>
+
+  </body>
+
+</html>
+
