@@ -9,7 +9,7 @@
     <list default="true" id="e4b01ad2-e9ce-46c9-8097-49087e849fae" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/API/Application.class" afterPath="$PROJECT_DIR$/target/classes/API/Application.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/API/Controller.class" afterPath="$PROJECT_DIR$/target/classes/API/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/API/Application.java" afterPath="$PROJECT_DIR$/src/main/java/API/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java" afterPath="$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -30,8 +30,8 @@
       <file leaf-file-name="DBCommun.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/API/DBCommunication/DBCommun.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="59" column="10" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
+            <state relative-caret-position="226">
+              <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,21 +39,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Queries.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Queries.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="376">
+              <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
               <folding>
                 <element signature="method#getAllManagersQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getManagerByNameQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getManagerByIDQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#deleteManagerByIDQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getAllStoreTechniciansQuery#0;class#Queries#0" expanded="false" />
                 <element signature="method#getStoreTechnicianByNameQuery#0;class#Queries#0" expanded="false" />
-                <element signature="method#getCustomersQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getStoreTechnicianByIDQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getAllCustomersQuery#0;class#Queries#0" expanded="false" />
                 <element signature="method#getCustomerByNameQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getCustomerByIDQuery#0;class#Queries#0" expanded="false" />
                 <element signature="method#getAllAlbumsQuery#0;class#Queries#0" expanded="false" />
-                <element signature="method#getArtistNamyByIDQuery#0;class#Queries#0" expanded="false" />
                 <element signature="method#getAlbumByArtistNameQuery#0;class#Queries#0" expanded="false" />
-                <element signature="method#getAlbumByArtistNameASCPriceQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getAlbumByNameQuery#0;class#Queries#0" expanded="false" />
                 <element signature="method#getAlbumByArtistNameDESCPriceQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getAllArtistsQuery#0;class#Queries#0" expanded="false" />
+                <element signature="method#getArtistNamyByIDQuery#0;class#Queries#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -65,21 +72,21 @@
             <state relative-caret-position="-15554">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1532567839000" expanded="true" signature="59:63996" ph="..." />
-                <marker date="1532567839000" expanded="true" signature="253:369" ph="..." />
-                <marker date="1532567839000" expanded="true" signature="347:369" ph="..." />
-                <marker date="1532567839000" expanded="true" signature="61333:61350" ph="..." />
-                <marker date="1532567839000" expanded="true" signature="61333:61368" ph="..." />
-                <marker date="1532567839000" expanded="true" signature="61333:61381" ph="..." />
+                <marker date="1532652693000" expanded="true" signature="59:66058" ph="..." />
+                <marker date="1532652693000" expanded="true" signature="253:369" ph="..." />
+                <marker date="1532652693000" expanded="true" signature="347:369" ph="..." />
+                <marker date="1532652693000" expanded="true" signature="63395:63412" ph="..." />
+                <marker date="1532652693000" expanded="true" signature="63395:63430" ph="..." />
+                <marker date="1532652693000" expanded="true" signature="63395:63443" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Quieres" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Quieres" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/API/Quieres">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
+            <state relative-caret-position="1110">
               <caret line="74" column="20" lean-forward="false" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
               <folding />
             </state>
@@ -162,10 +169,10 @@
         <option value="$PROJECT_DIR$/src/main/java/API/Model/Album.java" />
         <option value="$PROJECT_DIR$/src/main/java/API/DBCommunication/SQLDB.java" />
         <option value="$PROJECT_DIR$/src/main/java/API/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/API/DBCommunication/DBCommun.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/java/API/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java" />
+        <option value="$PROJECT_DIR$/src/main/java/API/DBCommunication/DBCommun.java" />
       </list>
     </option>
   </component>
@@ -652,7 +659,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java</url>
+          <line>12</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="6" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1063,12 +1084,12 @@
         <state relative-caret-position="-15554">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1532567839000" expanded="true" signature="59:63996" ph="..." />
-            <marker date="1532567839000" expanded="true" signature="253:369" ph="..." />
-            <marker date="1532567839000" expanded="true" signature="347:369" ph="..." />
-            <marker date="1532567839000" expanded="true" signature="61333:61350" ph="..." />
-            <marker date="1532567839000" expanded="true" signature="61333:61368" ph="..." />
-            <marker date="1532567839000" expanded="true" signature="61333:61381" ph="..." />
+            <marker date="1532652693000" expanded="true" signature="59:66058" ph="..." />
+            <marker date="1532652693000" expanded="true" signature="253:369" ph="..." />
+            <marker date="1532652693000" expanded="true" signature="347:369" ph="..." />
+            <marker date="1532652693000" expanded="true" signature="63395:63412" ph="..." />
+            <marker date="1532652693000" expanded="true" signature="63395:63430" ph="..." />
+            <marker date="1532652693000" expanded="true" signature="63395:63443" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1079,16 +1100,6 @@
           <caret line="19" column="99" lean-forward="false" selection-start-line="19" selection-start-column="99" selection-end-line="19" selection-end-column="99" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/API/DBCommunication/DBCommun.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="59" column="10" lean-forward="false" selection-start-line="59" selection-start-column="10" selection-end-line="59" selection-end-column="10" />
-          <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -1105,29 +1116,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/API/Quieres">
+    <entry file="file://$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="74" column="20" lean-forward="false" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
-          <folding />
+        <state relative-caret-position="376">
+          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+          <folding>
+            <element signature="method#getAllManagersQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getManagerByNameQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getManagerByIDQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#deleteManagerByIDQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getAllStoreTechniciansQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getStoreTechnicianByNameQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getStoreTechnicianByIDQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getAllCustomersQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getCustomerByNameQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getCustomerByIDQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getAllAlbumsQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getAlbumByArtistNameQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getAlbumByNameQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getAlbumByArtistNameDESCPriceQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getAllArtistsQuery#0;class#Queries#0" expanded="false" />
+            <element signature="method#getArtistNamyByIDQuery#0;class#Queries#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/API/DBCommunication/Queries.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/API/DBCommunication/DBCommun.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="226">
+          <caret line="50" column="18" lean-forward="false" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="18" />
           <folding>
-            <element signature="method#getAllManagersQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getStoreTechnicianByNameQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getCustomersQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getCustomerByNameQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getAllAlbumsQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getArtistNamyByIDQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getAlbumByArtistNameQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getAlbumByArtistNameASCPriceQuery#0;class#Queries#0" expanded="false" />
-            <element signature="method#getAlbumByArtistNameDESCPriceQuery#0;class#Queries#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/API/Quieres">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1110">
+          <caret line="74" column="20" lean-forward="false" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
