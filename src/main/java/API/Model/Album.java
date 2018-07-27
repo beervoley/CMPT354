@@ -60,7 +60,7 @@ public class Album {
         AlbumID = albumID;
     }
 
-    public static String buildAlbumGSON(ResultSet rset) {
+    public static String buildJSON(ResultSet rset) {
         List<Album> albumList = new ArrayList<>();
         try {
             while (rset.next()) {

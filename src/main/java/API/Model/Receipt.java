@@ -40,7 +40,7 @@ public class Receipt {
         Date = date;
     }
 
-    public static String buildReceiptGSON(ResultSet rset) {
+    public static String buildJSON(ResultSet rset) {
         List<Receipt> receiptList = new ArrayList<>();
         try {
             while (rset.next()) {

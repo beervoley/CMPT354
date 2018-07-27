@@ -27,7 +27,7 @@ public class Artist {
         ArtistName = artistName;
     }
 
-    public static String buildArtistGSON(ResultSet rset){
+    public static String buildJSON(ResultSet rset){
         List<Artist> artistList = new ArrayList<>();
         try{
             while (rset.next()) {

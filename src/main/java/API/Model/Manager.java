@@ -28,7 +28,7 @@ public class Manager {
         EmployeeName = employeeName;
     }
 
-    public static String buildManagerGSON(ResultSet rset) {
+    public static String buildJSON(ResultSet rset) {
         List<Manager> managerList = new ArrayList<>();
         try {
             while (rset.next()) {

@@ -1,15 +1,11 @@
 package API.DBCommunication;
 
 import API.Model.*;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by vsevolod on 2018-07-23.
@@ -34,7 +30,7 @@ public class DBCommun {
     public static String getCDSByFirstName(String name) {
         String query = getAlbumQueryByName(name);
         ResultSet rset = runQuery(query);
-        return Album.buildAlbumGSON(rset);
+        return Album.buildJSON(rset);
     }
 
 
