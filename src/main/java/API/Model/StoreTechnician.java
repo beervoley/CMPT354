@@ -1,5 +1,12 @@
 package API.Model;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by vsevolod on 2018-07-23.
  */
@@ -19,5 +26,21 @@ public class StoreTechnician {
     public StoreTechnician(int employeeID, String employeeName) {
         EmployeeID = employeeID;
         EmployeeName = employeeName;
+    }
+
+    private static String buildStoreTechnicianGSON(ResultSet rset) {
+        List<StoreTechnician> storeTechnicianList = new ArrayList<>();
+        try {
+            while (rset.next()) {
+                storeTechnicianList.add(new StoreTechnician(rset.getInt("ManagerID"),
+                        rset.getString("ManagerName").trim())
+                );
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(storeTechnicianList);
+        } catch (Exception ex) {
+            System.out.println("During building a JSON response: " + ex.toString());
+        }
+        return null;
     }
 }
