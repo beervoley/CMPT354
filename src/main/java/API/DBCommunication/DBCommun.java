@@ -12,7 +12,7 @@ public class DBCommun {
 
 
     // Manager Table functions
-    public static String getAllManagersQuery() {
+    public static String getAllManagers() {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getAllManagersQuery(), connection)) {
             return Manager.buildJSON(resultSet);
@@ -21,7 +21,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getManagerByFirstNameQuery(String name) {
+    public static String getManagerByFirstName(String name) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getManagerByFirstNameQuery(name), connection)) {
             return Manager.buildJSON(resultSet);
@@ -30,7 +30,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getManagerByFullNameQuery(String firstName, String lastName) {
+    public static String getManagerByFullName(String firstName, String lastName) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getManagerByFullNameQuery(firstName, lastName), connection)) {
             return Manager.buildJSON(resultSet);
@@ -39,7 +39,7 @@ public class DBCommun {
         }
         return "";
     }
-    public static String getManagerByIDQuery(int id) {
+    public static String getManagerByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getManagerByIDQuery(id), connection)) {
             return Manager.buildJSON(resultSet);
@@ -48,7 +48,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String deleteManagerByIDQuery(int id) {
+    public static String deleteManagerByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.deleteManagerByIDQuery(id), connection)) {
             return Manager.buildJSON(resultSet);
@@ -60,7 +60,7 @@ public class DBCommun {
 
 
     // StoreTechnician Talbe Functions
-    public static String getAllStoreTechniciansQuery() {
+    public static String getAllStoreTechnicians() {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getAllStoreTechniciansQuery(), connection)) {
             return StoreTechnician.buildJSON(resultSet);
@@ -69,7 +69,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getStoreTechnicianByFirstNameQuery(String name) {
+    public static String getStoreTechnicianByFirstName(String name) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getStoreTechnicianByFirstNameQuery(name), connection)) {
             return StoreTechnician.buildJSON(resultSet);
@@ -83,11 +83,11 @@ public class DBCommun {
             ResultSet resultSet = runQuery(Queries.getStoreTechnicianByFullNameQuery(firstName, lastName), connection)) {
             return StoreTechnician.buildJSON(resultSet);
         } catch (Exception ex) {
-            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+            System.out.println(String.format("Error during  execution: %s", ex.toString()));
         }
         return "";
     } // tested
-    public static String getStoreTechnicianByIDQuery(int id) {
+    public static String getStoreTechnicianByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getStoreTechnicianByIDQuery(id), connection)) {
             return StoreTechnician.buildJSON(resultSet);
@@ -96,7 +96,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String deleteStoreTechnicianByIDQuery(int id) {
+    public static String deleteStoreTechnicianByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.deleteStoreTechnicianByIDQuery(id), connection)) {
             return StoreTechnician.buildJSON(resultSet);
@@ -108,7 +108,7 @@ public class DBCommun {
 
 
     // Customer Table Functions
-    public static String getAllCustomersQuery() {
+    public static String getAllCustomers() {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getAllCustomersQuery(), connection)) {
             return Customer.buildJSON(resultSet);
@@ -117,7 +117,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getCustomerByFirstNameQuery(String name) {
+    public static String getCustomerByFirstName(String name) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getCustomerByFirstNameQuery(name), connection)) {
             return Customer.buildJSON(resultSet);
@@ -126,7 +126,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getCustomerByFullNameQuery(String firstName, String lastName) {
+    public static String getCustomerByFullName(String firstName, String lastName) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getCustomerByFullNameQuery(firstName, lastName), connection)) {
             return Customer.buildJSON(resultSet);
@@ -135,7 +135,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getCustomerByIDQuery(int id) {
+    public static String getCustomerByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getCustomerByIDQuery(id), connection)) {
             return Customer.buildJSON(resultSet);
@@ -156,7 +156,7 @@ public class DBCommun {
 
 
     // Album Table Functions
-    public static String getAllAlbumsQuery() {
+    public static String getAllAlbums() {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getAllAlbumsQuery(), connection)) {
             return Album.buildJSON(resultSet);
@@ -165,7 +165,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getAlbumByNameQuery(String name) {
+    public static String getAlbumByName(String name) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getAlbumByNameQuery(name), connection)) {
             return Album.buildJSON(resultSet);
@@ -220,7 +220,7 @@ public class DBCommun {
         }
         return "";
     }
-    public static String deleteAlbumByIDQuery(int id) {
+    public static String deleteAlbumByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.deleteAlbumByIDQuery(id), connection)) {
             return Album.buildJSON(resultSet);
@@ -231,7 +231,7 @@ public class DBCommun {
     } // tested
 
     // Artist Table Functions
-    public static String getAllArtistsQuery() {
+    public static String getAllArtists() {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getAllArtistsQuery(), connection)) {
             return Artist.buildJSON(resultSet);
@@ -240,7 +240,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getArtistByIDQuery(int id) {
+    public static String getArtistByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getArtistByIDQuery(id), connection)) {
             return Artist.buildJSON(resultSet);
@@ -249,7 +249,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getArtistByFirstNameQuery(String name) {
+    public static String getArtistByFirstName(String name) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getArtistByFirstNameQuery(name), connection)) {
             return Artist.buildJSON(resultSet);
@@ -258,7 +258,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String getArtistByFullNameQuery(String firstName, String lastName) {
+    public static String getArtistByFullName(String firstName, String lastName) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.getArtistByFullNameQuery(firstName, lastName), connection)) {
             return Artist.buildJSON(resultSet);
@@ -267,7 +267,7 @@ public class DBCommun {
         }
         return "";
     } // tested
-    public static String deleteArtistByIDQuery(int id) {
+    public static String deleteArtistByID(int id) {
         try(Connection connection = getConnection();
             ResultSet resultSet = runQuery(Queries.deleteArtistByIDQuery(id), connection)) {
             return Artist.buildJSON(resultSet);
@@ -277,7 +277,73 @@ public class DBCommun {
         return "";
     }
 
-    
+
+    // Receipt Table Functions
+    public static String getAllReceipts() {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getAllReceiptsQuery(), connection)) {
+            return Receipt.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    } // tested
+    public static String getReceiptByID(int id) {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getReceiptByIDQuery(id), connection)) {
+            return Receipt.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    } // tested
+    public static String getReceiptsByCustomerName(String name) {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getReceiptsByCustomerNameQuery(name), connection)) {
+            return Receipt.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    } // tested
+    public static String getReceiptsByCustomerFullName(String firstName, String lastName) {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getReceiptsByCustomerFullNameQuery(firstName, lastName),
+                    connection)) {
+            return Receipt.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    } // tested
+    public static String getReceiptsByAlbumName(String name) {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getReceiptsByAlbumNameQuery(name), connection)) {
+            return Receipt.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    } //
+    public static String getReceiptsByCustomerID(int id) {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getReceiptsByCustomerIDQuery(id), connection)) {
+            return Receipt.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    }
+    public static String getReceiptsByAlbumID(int id) {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getReceiptsByAlbumIDQuery(id), connection)) {
+            return Receipt.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    }
+
 
     private static Connection getConnection() {
         try {

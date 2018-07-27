@@ -1,4 +1,4 @@
-package API;
+package API.WebUtils;
 
 /**
  * Created by vsevolod on 2018-05-17.
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 import static API.DBCommunication.DBCommun.*;
-import static API.DBCommunication.SQLDB.*;
 
 @RestController
 public class Controller {
@@ -20,20 +19,8 @@ public class Controller {
     public static String searchAlbums(@RequestParam("name") String name,
                                       @RequestParam(value = "order", defaultValue = "ASC") String order)
     {
-
-//        String[] arr = name.split("+");
-//
-//        switch (arr.length) {
-//            case 1:
-//                return order.equals("ASC") ?
-//
-//        }
-//
-//
-//
-//        return getCDSByFirstName(name);
-        return "";
-
+        String JSONResponse = RequestHandler.handleSearchAlbumsMapping(name, order);
+        return JSONResponse;
     }
 
 

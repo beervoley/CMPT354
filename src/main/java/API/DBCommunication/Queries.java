@@ -178,4 +178,53 @@ public class Queries {
 
 
 
+    // Queries for Receipt Table
+
+    public static String getAllReceiptsQuery() {
+        return "SELECT * " +
+                "FROM Receipt;";
+    } // tested
+    public static String getReceiptByIDQuery(int id) {
+        return String.format("SELECT * FROM Receipt WHERE ReceiptID = %d;", id);
+    } // tested
+    public static String getReceiptsByCustomerNameQuery(String name) {
+        return String.format("SELECT ReceiptID, Date, Album.AlbumID as AlbumID, Customer.CustomerID as CustomerID, Album.Price, CustomerName, AlbumName " +
+                "FROM Receipt, Customer, Album " +
+                "WHERE CustomerName LIKE '%%%s%%' AND Receipt.CustomerID = Customer.CustomerID " +
+                "AND Receipt.AlbumID = Album.AlbumID " +
+                "ORDER BY Album.price DESC;", name);
+    } // tested
+    public static String getReceiptsByCustomerFullNameQuery(String firstName, String lastName) {
+        return String.format("SELECT ReceiptID, Date, Album.AlbumID as AlbumID, Customer.CustomerID as CustomerID, Album.Price, CustomerName, AlbumName " +
+                "FROM Receipt, Customer, Album " +
+                "WHERE (CustomerName LIKE '%%%s%%' OR CustomerName LIKE '%%%s%%') " +
+                "AND Receipt.CustomerID = Customer.CustomerID " +
+                "AND Receipt.AlbumID = Album.AlbumID " +
+                "ORDER BY Album.price DESC;", firstName, lastName);
+    } // tested
+    public static String getReceiptsByAlbumNameQuery(String name) {
+        return String.format("SELECT ReceiptID, Date, Album.AlbumID as AlbumID, Customer.CustomerID as CustomerID, Album.Price, CustomerName, AlbumName " +
+                "FROM Receipt, Customer, Album " +
+                "WHERE AlbumName LIKE '%%%s%%' AND Receipt.CustomerID = Customer.CustomerID " +
+                "AND Receipt.AlbumID = Album.AlbumID " +
+                "ORDER BY Album.price DESC;", name);
+    } //
+    public static String getReceiptsByCustomerIDQuery(int id) {
+        return String.format("SELECT ReceiptID, Date, Album.AlbumID as AlbumID, Customer.CustomerID as CustomerID, Album.Price, CustomerName, AlbumName " +
+                "FROM Receipt, Customer, Album " +
+                "WHERE Receipt.CustomerID = %d AND Receipt.CustomerID = Customer.CustomerID " +
+                "AND Receipt.AlbumID = Album.AlbumID " +
+                "ORDER BY Album.price DESC;", id);
+    }
+    public static String getReceiptsByAlbumIDQuery(int id) {
+        return String.format("SELECT ReceiptID, Date, Album.AlbumID as AlbumID, Customer.CustomerID as CustomerID, Album.Price, CustomerName, AlbumName " +
+                "FROM Receipt, Customer, Album " +
+                "WHERE Receipt.AlbumID = %d AND Receipt.CustomerID = Customer.CustomerID " +
+                "AND Receipt.AlbumID = Album.AlbumID " +
+                "ORDER BY Album.price DESC;", id);
+    }
+
+
+
+
 }
