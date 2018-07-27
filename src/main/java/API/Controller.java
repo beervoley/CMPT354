@@ -17,9 +17,22 @@ import static API.DBCommunication.SQLDB.*;
 public class Controller {
 
     @RequestMapping("/searchAlbums")
-    public static String searchAlbums(@RequestParam("name") String name) {
+    public static String searchAlbums(@RequestParam("name") String name,
+                                      @RequestParam(value = "order", defaultValue = "ASC") String order)
+    {
 
-        return getCDSByFirstName(name);
+//        String[] arr = name.split("+");
+//
+//        switch (arr.length) {
+//            case 1:
+//                return order.equals("ASC") ?
+//
+//        }
+//
+//
+//
+//        return getCDSByFirstName(name);
+        return "";
 
     }
 
