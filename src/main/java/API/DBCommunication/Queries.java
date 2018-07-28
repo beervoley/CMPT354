@@ -223,6 +223,10 @@ public class Queries {
                 "AND Receipt.AlbumID = Album.AlbumID " +
                 "ORDER BY Album.price DESC;", id);
     }
+    public static String deleteReceiptByIDQuery(int id) {
+        return String.format("DELETE FROM Receipt " +
+                "WHERE ReceiptID = %d;" ,id);
+    }
 
 
 

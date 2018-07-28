@@ -49,9 +49,8 @@ public class DBCommun {
         return "";
     } // tested
     public static String deleteManagerByID(int id) {
-        try(Connection connection = getConnection();
-            ResultSet resultSet = runQuery(Queries.deleteManagerByIDQuery(id), connection)) {
-            return Manager.buildJSON(resultSet);
+        try(Connection connection = getConnection()) {
+            return runQueryDML(Queries.deleteManagerByIDQuery(id), connection);
         } catch (Exception ex) {
             System.out.println(String.format("Error during query execution: %s", ex.toString()));
         }
@@ -97,9 +96,8 @@ public class DBCommun {
         return "";
     } // tested
     public static String deleteStoreTechnicianByID(int id) {
-        try(Connection connection = getConnection();
-            ResultSet resultSet = runQuery(Queries.deleteStoreTechnicianByIDQuery(id), connection)) {
-            return StoreTechnician.buildJSON(resultSet);
+        try(Connection connection = getConnection()) {
+            return runQueryDML(Queries.deleteStoreTechnicianByIDQuery(id), connection);
         } catch (Exception ex) {
             System.out.println(String.format("Error during query execution: %s", ex.toString()));
         }
@@ -145,9 +143,8 @@ public class DBCommun {
         return "";
     } // tested
     public static String deleteCustomerByIDQuery(int id) {
-        try(Connection connection = getConnection();
-            ResultSet resultSet = runQuery(Queries.deleteCustomerByIDQuery(id), connection)) {
-            return Customer.buildJSON(resultSet);
+        try(Connection connection = getConnection()) {
+            return runQueryDML(Queries.deleteCustomerByIDQuery(id), connection);
         } catch (Exception ex) {
             System.out.println(String.format("Error during query execution: %s", ex.toString()));
         }
@@ -221,9 +218,8 @@ public class DBCommun {
         return "";
     }
     public static String deleteAlbumByID(int id) {
-        try(Connection connection = getConnection();
-            ResultSet resultSet = runQuery(Queries.deleteAlbumByIDQuery(id), connection)) {
-            return Album.buildJSON(resultSet);
+        try(Connection connection = getConnection()) {
+            return runQueryDML(Queries.deleteAlbumByIDQuery(id), connection);
         } catch (Exception ex) {
             System.out.println(String.format("Error during query execution: %s", ex.toString()));
         }
@@ -268,9 +264,8 @@ public class DBCommun {
         return "";
     } // tested
     public static String deleteArtistByID(int id) {
-        try(Connection connection = getConnection();
-            ResultSet resultSet = runQuery(Queries.deleteArtistByIDQuery(id), connection)) {
-            return Artist.buildJSON(resultSet);
+        try(Connection connection = getConnection()) {
+            return runQueryDML(Queries.deleteArtistByIDQuery(id), connection);
         } catch (Exception ex) {
             System.out.println(String.format("Error during query execution: %s", ex.toString()));
         }
@@ -343,6 +338,14 @@ public class DBCommun {
         }
         return "";
     }
+    public static String deleteReceiptByID(int id) {
+        try(Connection connection = getConnection()) {
+            return runQueryDML(Queries.deleteReceiptByIDQuery(id), connection);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    }
 
 
     private static Connection getConnection() {
@@ -365,6 +368,28 @@ public class DBCommun {
                 ResultSet queryResult = stl.executeQuery(query);
                 System.out.println("Query executed successfully");
                 return queryResult;
+            } catch (Exception ex) {
+                System.out.println("Query could not be executed. Reason: " + ex.toString());
+            }
+        }
+        return null;
+    }
+
+    public static String runQueryDML(String query, Connection connection) {
+        if(connection != null) {
+            try {
+                PreparedStatement stl = connection.prepareStatement(query);
+                int result = stl.executeUpdate();
+                if(result>0) {
+                    System.out.println("Query executed successfully");
+                    return ("Query executed successfully");
+                }
+                else {
+                    System.out.println("Error during UPDATE/INSERT/DELETE");
+                    return ("Error during UPDATE/INSERT/DELETE");
+                }
+
+
             } catch (Exception ex) {
                 System.out.println("Query could not be executed. Reason: " + ex.toString());
             }
