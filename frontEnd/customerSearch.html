@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Music Store Homepage - Start Shopping</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Javascript -->
+    <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
+    
+    <!-- Custom styles for this template -->
+    <link href="customerSearch.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="margin-top: 0px;">
+      <div class="container">
+        <a class="navbar-brand" href="#">Music Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Employees Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+<div class="container">
+
+      <div class="row">
+      
+      <div class="dropdown"">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <ul id="myUL" id="myDropdown" style="display: none;">
+          <li><a href="#">Adele</a></li>
+          <li><a href="#">Agnes</a></li>
+
+          <li><a href="#">Billy</a></li>
+          <li><a href="#">Bob</a></li>
+
+          <li><a href="#">Calvin</a></li>
+          <li><a href="#">Christina</a></li>
+          <li><a href="#">Cindy</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown" style="top: 10px;">
+          <select  id="filter1">
+            <option selected>Choose a any filter</option>
+            <option >Three</option>
+            <option >One</option>
+            <option >Zero</option>
+            <option >Two</option>
+            <option >Eight</option>
+          </select>
+        </div>
+
+        <div class="dropdown"  style="top: 10px;">
+          <select  id="filter2">
+            <option selected>Choose a price filter</option>
+            <option >Kunal</option>
+            <option >gulati</option>
+            <option >Zero</option>
+            <option >Two</option>
+            <option >Eight</option>
+          </select>
+        </div>
+
+
+        <div class="dropdown" style="top: 10px;">
+            <input type="submit" value="Submit" id="submit" onclick="submit();">
+
+        </div>
+
+    <!-- Page Content -->
+    <div class="container">
+        <!-- /.col-lg-3 -->
+
+        <div class="col-lg-11">
+
+          <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <img class="d-block img-fluid" src="./image/three.jpg" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block img-fluid" src="./image/two.jpg" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block img-fluid" src="./image/one.jpg" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+
+            <div style="overflow-x:auto;">
+            <table >
+              <tr>
+                <th>Album Name</th>
+                <th>Album Year</th>
+                <th>Price</th>
+                <th>Artist Name</th>
+              </tr>
+              <tbody id="tableOverall">
+              <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+              </tr>
+              </tbody >
+
+            </table>
+          </div>
+
+          </div>
+          <!-- /.row -->
+
+        </div>
+        <!-- /.col-lg-9 -->
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+  </body>
+
+</html>
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+window.onload = function() {
+  getData();
+   dynamicallyPopulate("kunak");
+};
+
+var myArray;
+/*get the required data from the database*/
+/*on load, it loads all the avilable data*/
+function getData(){
+
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://cmpt354.herokuapp.com/searchAlbums";
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myArray = JSON.parse(this.responseText);
+        display(myArray)
+      }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+
+
+
+};
+
+/*Dynamically populate the Table*/
+  function display(myArray) {
+        var length = myArray.length;
+
+        console.log(myArray)
+        var htmltext = "";
+
+        for (var i = 0; i < length; i++) {
+            htmltext += "<tr id='table"+i+"'><td>"
+            +myArray[i].AlbumName+
+            "</td><td>"
+            +myArray[i].AlbumYear+
+            "</td><td>"
+            +myArray[i].Price+
+            "</td><td>"
+            +myArray[i].ArtistName+"</td></tr>";
+        }
+        document.getElementById("tableOverall").innerHTML = htmltext;
+    }
+
+function myFunction() {
+
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+};
+
+/* get searchbar and dropdown arguments */
+function submit(){
+  var myInput = document.getElementById("myInput");
+  var filter1 = document.getElementById("filter1");
+  var filter2 = document.getElementById("filter2");
+
+
+  var filter1Val = filter1.options[filter1.selectedIndex].value;
+  var filter2Val = filter2.options[filter2.selectedIndex].value;
+  var myInputVal = myInput.value;
+};
+</script>
