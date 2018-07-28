@@ -29,7 +29,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark " style="margin-top: 0px; ">
       <div class="container">
-        <a class="navbar-brand" href="#">Music Store</a>
+        <a class="navbar-brand" href="customerSearch.html">Music Store</a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -92,7 +92,7 @@
         </div>
 
         <div class="dropdown" style="top: 10px;">
-            <input type="submit" value="Submit" onclick="submit();">
+            <input type="submit" value="Submit" id="submit" onclick="submit();">
 
         </div>
 <!-- 
@@ -107,28 +107,22 @@
         <!-- /.col-lg-3 -->
         <div class="col-lg-12" style="top: 30px; bottom: 40px;">
           <div style="overflow-x:auto;">
-            <table>
+            <table >
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Points</th>
+                <th>Update/Delete</th>
               </tr>
-              <tr>
+              <tbody id="tableOverall">
+                              <tr>
                 <td>Jill</td>
                 <td>Smith</td>
                 <td>50</td>
+                <td>Edit</td>
+                <td>Delete</td>
               </tr>
-              <tr>
-                <td>Eve</td>
-                <td>Jackson</td>
-                <td>94</td>
-                
-              </tr>
-              <tr>
-                <td>Adam</td>
-                <td>Johnson</td>
-                <td>67</td>
-              </tr>
+              </tbody >
+
             </table>
           </div>
         </div> 
@@ -148,6 +142,98 @@
 
 <script>
 
+
+window.onload = function() {
+  display();
+  // dynamicallyPopulate("kunak");
+};
+
+/*get the required data from the database*/
+/*on load, it loads all the avilable data*/
+function getData(){
+  var data;
+  dynamicallyPopulate(data);
+};
+
+/*Dynamically populate the Table*/
+function dynamicallyPopulate(data){
+
+  // var myTableDiv = document.getElementById("metric_results")
+  var table = document.getElementById('TABLE')
+  var tableBody = document.getElementById('tableOverall')
+
+  /* replace 10 with the length of data argument*/
+  for (i = 0; i < 5; i++) {
+    var tr = document.createElement('TR');
+    for (j = 0; j < 3; j++) { 
+        var td = document.createElement('TD')
+        td.appendChild(document.createTextNode("Jill"));
+        tr.appendChild(td)
+    }
+
+    var td = document.createElement('TD')
+        td.appendChild(document.createTextNode("Edit"));
+        tr.appendChild(td)
+
+    var td = document.createElement('TD')
+        td.appendChild(document.createTextNode("Delete"));
+        tr.appendChild(td)
+
+    tableBody.appendChild(tr);
+  }
+
+};
+
+var myArray = [{ "name": "aaa", "level": "A",  }, { "name": "bbb", "level": "B" }, { "name": "ccc", "level": "C" }];
+
+  function display() {
+        var length = myArray.length;
+        var htmltext = "";
+
+        var tableHeader = '<tr><th>First Name</th> <th>Last Name</th><th>Points</th><th>Edit</th><th>Delete</th></tr>'
+        document.getElementById("tableOverall").innerHTML = tableHeader;
+
+        for (var i = 0; i < length; i++) {
+            htmltext += "<tr id='table"+i+"'><td>"
+            +myArray[i].name+
+            "</td><td>"
+            +myArray[i].level+
+            "</td><td><button onclick='edit("+i+")'>Edit</button><button onclick='remove("+i+")'>Remove</button></td></tr>";
+        }
+        document.getElementById("tableOverall").innerHTML = htmltext;
+    }
+
+
+
+function edit(indice) {
+  var htmltext = "<tr><td><input id='inputname"+indice+"' type='text' value='"
+            +myArray[indice].name+
+            "'></td><td><input id='inputlevel"+indice+"' type='text' value='"
+            +myArray[indice].level+
+            "'></td><td><button onclick='save("+indice+")'>Save</button><button onclick='remove("+indice+")'>Remove</button></td></tr>";
+        document.getElementById("table"+indice).innerHTML = htmltext; 
+    }
+
+
+    function save(indice) {
+        myArray[indice].name = document.getElementById("inputname"+indice).value;
+        myArray[indice].level = document.getElementById("inputlevel"+indice).value;
+        var htmltext = "<tr id='table"+indice+"'><td>"
+            +myArray[indice].name+
+            "</td><td>"
+            +myArray[indice].level+
+            "</td><td><button onclick='edit("
+            +indice+")'>Edit</button><button onclick='remove("
+            +indice+")'>Remove</button></td></tr>";
+        document.getElementById("table"+indice).innerHTML = htmltext;
+    }
+
+    function remove(indice) {
+        console.log(myArray);
+        myArray.splice(indice, 1);
+        display();
+}
+
 function myFunction() {
 
     var input, filter, ul, li, a, i;
@@ -165,6 +251,10 @@ function myFunction() {
     }
 };
 
+
+
+
+/* get searchbar and dropdown arguments */
 function submit(){
   var myInput = document.getElementById("myInput");
   var filter1 = document.getElementById("filter1");
@@ -174,7 +264,6 @@ function submit(){
   var filter1Val = filter1.options[filter1.selectedIndex].value;
   var filter2Val = filter2.options[filter2.selectedIndex].value;
   var myInputVal = myInput.value;
-
 };
 </script>
 

@@ -45,43 +45,58 @@
       </div>
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
+<div class="container">
 
       <div class="row">
+      
+      <div class="dropdown"">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+        <ul id="myUL" id="myDropdown" style="display: none;">
+          <li><a href="#">Adele</a></li>
+          <li><a href="#">Agnes</a></li>
 
-        <div class="col-lg-3">
+          <li><a href="#">Billy</a></li>
+          <li><a href="#">Bob</a></li>
 
-        <div class="dropdown">
-          <button onclick="myFunction()" class="dropbtn">Search</button>
-            <div id="myDropdown" class="dropdown-content">
-              <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                <a href="#about">About</a>
-                <a href="#base">Base</a>
-                <a href="#blog">Blog</a>
-                <a href="#contact">Contact</a>
-                <a href="#custom">Custom</a>
-                <a href="#support">Support</a>
-                <a href="#tools">Tools</a>
-          </div>
+          <li><a href="#">Calvin</a></li>
+          <li><a href="#">Christina</a></li>
+          <li><a href="#">Cindy</a></li>
+        </ul>
+      </div>
+
+      <div class="dropdown" style="top: 10px;">
+          <select  id="filter1">
+            <option selected>Choose a any filter</option>
+            <option >Three</option>
+            <option >One</option>
+            <option >Zero</option>
+            <option >Two</option>
+            <option >Eight</option>
+          </select>
         </div>
 
-          <h3 class="my-4">Music Genres List</h3>
-          <div class="list-group">
-            <a href="#" class="list-group-item">All</a>
-            <a href="#" class="list-group-item">Alternative</a>
-            <a href="#" class="list-group-item">Blues</a>
-            <a href="#" class="list-group-item">Classical</a>
-            <a href="#" class="list-group-item">Dance</a>
-            <a href="#" class="list-group-item">Hip Hop</a>
-            <a href="#" class="list-group-item">Indie Pop</a>
-            <a href="#" class="list-group-item">Jazz</a>
-          </div>
+        <div class="dropdown"  style="top: 10px;">
+          <select  id="filter2">
+            <option selected>Choose a price filter</option>
+            <option >Kunal</option>
+            <option >gulati</option>
+            <option >Zero</option>
+            <option >Two</option>
+            <option >Eight</option>
+          </select>
+        </div>
+
+
+        <div class="dropdown" style="top: 10px;">
+            <input type="submit" value="Submit" id="submit" onclick="submit();">
 
         </div>
+
+    <!-- Page Content -->
+    <div class="container">
         <!-- /.col-lg-3 -->
 
-        <div class="col-lg-9">
+        <div class="col-lg-11">
 
           <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -110,103 +125,24 @@
             </a>
           </div>
 
-          <div class="row">
 
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="./image/small.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item One</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
+            <div style="overflow-x:auto;">
+            <table >
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Price</th>
+              </tr>
+              <tbody id="tableOverall">
+              <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+                <td>50</td>
+              </tr>
+              </tbody >
 
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="./image/small.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Two</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="./image/small.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Three</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="./image/small.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Four</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="./image/small.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Five</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="./image/small.jpg" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">Item Six</a>
-                  </h4>
-                  <h5>$24.99</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-            </div>
+            </table>
+          </div>
 
           </div>
           <!-- /.row -->
@@ -220,13 +156,6 @@
     </div>
     <!-- /.container -->
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-<!--         <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
- -->      </div>
-      <!-- /.container -->
-    </footer>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -240,22 +169,70 @@
 <script>
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+window.onload = function() {
+  getData();
+  // dynamicallyPopulate("kunak");
+};
 
-function filterFunction() {
+/*get the required data from the database*/
+/*on load, it loads all the avilable data*/
+function getData(){
+  var data;
+  dynamicallyPopulate(data);
+};
+
+/*Dynamically populate the Table*/
+function dynamicallyPopulate(data){
+
+  // var myTableDiv = document.getElementById("metric_results")
+  var table = document.getElementById('TABLE')
+  var tableBody = document.getElementById('tableOverall')
+
+  /* replace 10 with the length of data argument*/
+  for (i = 0; i < 5; i++) {
+    var tr = document.createElement('TR');
+    for (j = 0; j < 3; j++) { 
+        var td = document.createElement('TD')
+        td.appendChild(document.createTextNode("Jill"));
+        tr.appendChild(td)
+    }
+
+    tableBody.appendChild(tr);
+  }
+
+};
+
+
+
+function myFunction() {
+
     var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("a");
-    for (i = 0; i < a.length; i++) {
-        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
-            a[i].style.display = "";
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
         } else {
-            a[i].style.display = "none";
+            li[i].style.display = "none";
         }
     }
-}
+};
+
+
+
+
+/* get searchbar and dropdown arguments */
+function submit(){
+  var myInput = document.getElementById("myInput");
+  var filter1 = document.getElementById("filter1");
+  var filter2 = document.getElementById("filter2");
+
+
+  var filter1Val = filter1.options[filter1.selectedIndex].value;
+  var filter2Val = filter2.options[filter2.selectedIndex].value;
+  var myInputVal = myInput.value;
+};
 </script>
