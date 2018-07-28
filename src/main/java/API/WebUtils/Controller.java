@@ -4,6 +4,7 @@ package API.WebUtils;
  * Created by vsevolod on 2018-05-17.
  */
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
+    @CrossOrigin
     @RequestMapping("/searchAlbums")
     public static String searchAlbums(@RequestParam(value = "name", defaultValue = "Default") String name,
                                       @RequestParam(value = "id", defaultValue = "-1") int id,
@@ -30,6 +32,7 @@ public class Controller {
 
     }
 
+    @CrossOrigin
     @RequestMapping("/deleteAlbum")
     public static String deleteAlbum(@RequestParam("id") int id) {
         return RequestHandler.handleDeleteAlbumMapping(id);
@@ -37,7 +40,7 @@ public class Controller {
 
 
 
-
+    @CrossOrigin
     @RequestMapping("/searchArtists")
     public static String searchArtists(@RequestParam(value = "name", defaultValue = "Default") String name,
                                        @RequestParam(value = "id", defaultValue = "-1") int id)
@@ -50,7 +53,7 @@ public class Controller {
             return RequestHandler.handleSearchArtistMapping();
         }
     }
-
+    @CrossOrigin
     @RequestMapping("/updateArtist")
     public static String updateArtist(@RequestParam(value = "id", defaultValue = "-1") int id,
                                       @RequestParam(value = "name", defaultValue = "Default") String name)
@@ -61,14 +64,14 @@ public class Controller {
             return "Web Request Format is not correct.";
         }
     }
-
+    @CrossOrigin
     @RequestMapping("/deleteArtist")
     public static String deleteArtist(@RequestParam("id") int id) {
         return RequestHandler.handleDeleteArtistMapping(id);
     }
 
 
-
+    @CrossOrigin
     @RequestMapping("/searchManagers")
     public static String searchManagers(@RequestParam(value = "name", defaultValue = "Default") String name,
                                         @RequestParam(value = "id", defaultValue = "-1") int id)
@@ -81,14 +84,14 @@ public class Controller {
             return RequestHandler.handleSearchManagerMapping();
         }
     }
-
+    @CrossOrigin
     @RequestMapping("/deleteManager")
     public static String deleteManager(@RequestParam("id") int id) {
         return RequestHandler.handleDeleteManagerMapping(id);
     }
 
 
-
+    @CrossOrigin
     @RequestMapping("/searchStoreTechnicians")
     public static String searchStoreTechnicians(@RequestParam(value = "name", defaultValue = "Default") String name,
                                         @RequestParam(value = "id", defaultValue = "-1") int id)
@@ -101,12 +104,12 @@ public class Controller {
             return RequestHandler.handleSearchStoreTechnicianMapping();
         }
     }
-
+    @CrossOrigin
     @RequestMapping("/deleteStoreTechnician")
     public static String deleteStoreTechnician(@RequestParam("id") int id) {
         return RequestHandler.handleDeleteStoreTechnicianMapping(id);
     }
-
+    @CrossOrigin
     @RequestMapping("/searchCustomers")
     public static String searchCustomers(@RequestParam(value = "name", defaultValue = "Default") String name,
                                          @RequestParam(value = "id", defaultValue = "-1") int id,
@@ -129,13 +132,13 @@ public class Controller {
     }
 
 
-
+    @CrossOrigin
     @RequestMapping("/deleteCustomer")
     public static String deleteCustomer(@RequestParam("id") int id) {
         return RequestHandler.handleDeleteCustomerMapping(id);
     }
 
-
+    @CrossOrigin
     @RequestMapping("/searchReceipts")
     public static String searchReceipts(@RequestParam(value = "albumName", defaultValue = "Default") String albumName,
                                         @RequestParam(value = "albumID", defaultValue = "-1") int albumID,
@@ -158,7 +161,7 @@ public class Controller {
             return RequestHandler.handleSearchReceiptMapping();
         }
     }
-
+    @CrossOrigin
     @RequestMapping("/deleteReceipt")
     public static String deleteReceipt(@RequestParam("id") int id) {
         return RequestHandler.handleDeleteReceiptMapping(id);
