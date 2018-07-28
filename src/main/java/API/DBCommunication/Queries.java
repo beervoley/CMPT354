@@ -76,6 +76,21 @@ public class Queries {
                 "FROM Customer " +
                 "WHERE CustomerID = %d;", id);
     } // tested
+    public static String getNumberOfPurchasesPerCustomerQuery() {
+        return "SELECT CustomerID, Count(*) as 'Number of Purchases' " +
+                "FROM Receipt " +
+                "GROUP BY CustomerID;";
+    }
+    public static String getCustomersWhoBoughtAllTheAlbums() {
+        return "SELECT * " +
+                "FROM Customer c " +
+                "WHERE NOT EXISTS " +
+                "((SELECT a.AlbumID from Album a) " +
+                "EXCEPT " +
+                "(SELECT r.AlbumID " +
+                "FROM Receipt r " +
+                "WHERE r.CustomerID = c.CustomerID));";
+    }
     public static String deleteCustomerByIDQuery(int id) {
         return String.format("DELETE FROM Customer " +
                 "WHERE CustomerID = %d;" ,id);
@@ -99,8 +114,6 @@ public class Queries {
                 "FROM Artist, Album " +
                 "WHERE Artist.ArtistID = Album.ArtistID AND AlbumID = %d;", id);
     } // tested
-
-
     public static String getAlbumByOneSearchStringASC(String s1) {
 
         return String.format("SELECT AlbumID, AlbumName, AlbumYear, Price, ArtistName " +
@@ -109,7 +122,6 @@ public class Queries {
                 "OR Album.AlbumName LIKE '%%%s%%') " +
                 "ORDER BY Price;", s1, s1);
     }
-
     public static String getAlbumByOneSearchStringDESC(String s1) {
 
         return String.format("SELECT AlbumID, AlbumName, AlbumYear, Price, ArtistName " +
@@ -118,10 +130,6 @@ public class Queries {
                 "OR Album.AlbumName LIKE '%%%s%%') " +
                 "ORDER BY Price DESC;", s1, s1);
     }
-
-
-
-
     public static String getAlbumByTwoSearchStringASC(String s1, String s2) {
 
         return String.format("SELECT AlbumID, AlbumName, AlbumYear, Price, ArtistName " +
@@ -132,7 +140,6 @@ public class Queries {
                 "OR Album.AlbumName LIKE '%%%s%%') " +
                 "ORDER BY Price;", s1, s1, s2, s2);
     }
-
     public static String getAlbumByTwoSearchStringDESC(String s1, String s2) {
 
         return String.format("SELECT AlbumID, AlbumName, AlbumYear, Price, ArtistName " +
@@ -143,8 +150,9 @@ public class Queries {
                 "OR Album.AlbumName LIKE '%%%s%%') " +
                 "ORDER BY Price DESC;", s1, s1, s2, s2);
     }
-
-
+    public static String getNumberOfAlbums() {
+        return "SELECT COUNT(*) as Count FROM Album;";
+    }
     public static String deleteAlbumByIDQuery(int id) {
         return String.format("DELETE FROM Album " +
                 "WHERE AlbumID = %d;" ,id);
@@ -171,6 +179,11 @@ public class Queries {
                 "FROM Artist " +
                 "WHERE ArtistName LIKE '%%%s%%' OR ArtistName LIKE '%%%s%%';", firstName, lastName);
     } // tested
+    public static String updateArtistNameQuery(int id, String name) {
+        return String.format("UPDATE Artist " +
+                "SET ArtistName = '%s' " +
+                "where ArtistID = %d;", name, id);
+    }
     public static String deleteArtistByIDQuery(int id) {
         return String.format("DELETE FROM Artist " +
                 "WHERE ArtistID = %d;" ,id);

@@ -3,6 +3,7 @@ package API.Model;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Customer {
     private int CustomerID;
     private String CustomerName;
     private int ReferalCount;
+    private String NumberOfPurchases;
 
     public int getCustomerID() {
 
@@ -35,6 +37,10 @@ public class Customer {
         ReferalCount = referalCount;
     }
 
+    public Customer(int customerID, int numberOfPurchases) {
+        CustomerID = customerID;
+        NumberOfPurchases = numberOfPurchases + "";
+    }
 
     public static String buildJSON(ResultSet rset){
         List<Customer> customerList = new ArrayList<>();
@@ -52,4 +58,22 @@ public class Customer {
         }
         return null;
     }
+
+    public static String buildJSON(ResultSet rset, boolean b) {
+        List<Customer> customerList = new ArrayList<>();
+        try{
+            while (rset.next()) {
+                customerList.add(new Customer(rset.getInt("CustomerID"),
+                        rset.getInt("Number of Purchases")
+                ));
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            return gson.toJson(customerList);
+        } catch (Exception ex) {
+            System.out.println("During building a JSON response: " + ex.toString());
+        }
+        return null;
+    }
+
+
 }

@@ -14,9 +14,13 @@ public class Controller {
     @RequestMapping("/searchAlbums")
     public static String searchAlbums(@RequestParam(value = "name", defaultValue = "Default") String name,
                                       @RequestParam(value = "id", defaultValue = "-1") int id,
-                                      @RequestParam(value = "order", defaultValue = "ASC") String order)
+                                      @RequestParam(value = "order", defaultValue = "ASC") String order,
+                                      @RequestParam(value = "count", defaultValue = "false") boolean count)
     {
-        if(id != -1) {
+        if(count) {
+            return RequestHandler.handleSearchAlbumsMapping(count) + "";
+        }
+        else if(id != -1) {
             return RequestHandler.handleSearchAlbumsMapping(id);
         } else if(!name.equals("Default")) {
             return RequestHandler.handleSearchAlbumsMapping(name, order);
@@ -44,6 +48,17 @@ public class Controller {
             return RequestHandler.handleSearchArtistMapping(name);
         } else {
             return RequestHandler.handleSearchArtistMapping();
+        }
+    }
+
+    @RequestMapping("/updateArtist")
+    public static String updateArtist(@RequestParam(value = "id", defaultValue = "-1") int id,
+                                      @RequestParam(value = "name", defaultValue = "Default") String name)
+    {
+        if(id != -1 && !name.equals("Default")) {
+            return RequestHandler.handleUpdateArtistMapping(id, name);
+        } else {
+            return "Web Request Format is not correct.";
         }
     }
 
@@ -94,9 +109,17 @@ public class Controller {
 
     @RequestMapping("/searchCustomers")
     public static String searchCustomers(@RequestParam(value = "name", defaultValue = "Default") String name,
-                                        @RequestParam(value = "id", defaultValue = "-1") int id)
+                                         @RequestParam(value = "id", defaultValue = "-1") int id,
+                                         @RequestParam(value = "count", defaultValue = "false") boolean count,
+                                         @RequestParam(value = "items", defaultValue = "notall") String items)
     {
-        if(id != -1) {
+        if(items.equals("all")) {
+            return RequestHandler.handleSearchCustomerAllItemsMapping();
+        }
+        else if(count) {
+            return RequestHandler.handleSearchCustomerMapping(count);
+        }
+        else if(id != -1) {
             return RequestHandler.handleSearchCustomerMapping(id);
         } else if(!name.equals("Default")) {
             return RequestHandler.handleSearchCustomerMapping(name);
@@ -104,6 +127,8 @@ public class Controller {
             return RequestHandler.handleSearchCustomerMapping();
         }
     }
+
+
 
     @RequestMapping("/deleteCustomer")
     public static String deleteCustomer(@RequestParam("id") int id) {

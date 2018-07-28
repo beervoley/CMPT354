@@ -142,6 +142,24 @@ public class DBCommun {
         }
         return "";
     } // tested
+    public static String getNumberOfPurchasesPerCustomer() {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getNumberOfPurchasesPerCustomerQuery(), connection)) {
+            return Customer.buildJSON(resultSet, true);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    }
+    public static String getCustomersWhoBoughtAllTheAlbums() {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getCustomersWhoBoughtAllTheAlbums(), connection)) {
+            return Customer.buildJSON(resultSet);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    }
     public static String deleteCustomerByIDQuery(int id) {
         try(Connection connection = getConnection()) {
             return runQueryDML(Queries.deleteCustomerByIDQuery(id), connection);
@@ -217,6 +235,17 @@ public class DBCommun {
         }
         return "";
     }
+    public static int getNumberOfAlbums() {
+        try(Connection connection = getConnection();
+            ResultSet resultSet = runQuery(Queries.getNumberOfAlbums(), connection)) {
+            if(resultSet.next()) {
+                return resultSet.getInt("Count");
+            }
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return 0;
+    }
     public static String deleteAlbumByID(int id) {
         try(Connection connection = getConnection()) {
             return runQueryDML(Queries.deleteAlbumByIDQuery(id), connection);
@@ -263,6 +292,14 @@ public class DBCommun {
         }
         return "";
     } // tested
+    public static String updateArtistNameByID(int id, String name) {
+        try(Connection connection = getConnection()) {
+            return runQueryDML(Queries.updateArtistNameQuery(id, name), connection);
+        } catch (Exception ex) {
+            System.out.println(String.format("Error during query execution: %s", ex.toString()));
+        }
+        return "";
+    }
     public static String deleteArtistByID(int id) {
         try(Connection connection = getConnection()) {
             return runQueryDML(Queries.deleteArtistByIDQuery(id), connection);

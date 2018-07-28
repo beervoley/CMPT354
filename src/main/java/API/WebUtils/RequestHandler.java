@@ -27,6 +27,7 @@ public class RequestHandler {
         return DBCommun.getAlbumByID(id);
     }
     public static String handleSearchAlbumsMapping() {return DBCommun.getAllAlbums();}
+    public static int handleSearchAlbumsMapping(boolean count) { return DBCommun.getNumberOfAlbums(); }
     public static String handleDeleteAlbumMapping(int id) { return DBCommun.deleteAlbumByID(id);}
 
 
@@ -82,6 +83,9 @@ public class RequestHandler {
         return DBCommun.getCustomerByID(id);
     }
     public static String handleSearchCustomerMapping() { return DBCommun.getAllCustomers(); }
+    public static String handleSearchCustomerMapping(boolean count) {
+        return DBCommun.getNumberOfPurchasesPerCustomer();
+    }
     public static String handleDeleteCustomerMapping(int id) { return DBCommun.deleteCustomerByIDQuery(id); }
 
 
@@ -101,6 +105,7 @@ public class RequestHandler {
         return DBCommun.getArtistByID(id);
     }
     public static String handleSearchArtistMapping() { return DBCommun.getAllArtists(); }
+    public static String handleUpdateArtistMapping(int id, String name) { return DBCommun.updateArtistNameByID(id, name); }
     public static String handleDeleteArtistMapping(int id) { return DBCommun.deleteArtistByID(id); }
 
 
@@ -127,4 +132,7 @@ public class RequestHandler {
     public static String handleDeleteReceiptMapping(int id) { return DBCommun.deleteReceiptByID(id); }
 
 
+    public static String handleSearchCustomerAllItemsMapping() {
+        return DBCommun.getCustomersWhoBoughtAllTheAlbums();
+    }
 }
