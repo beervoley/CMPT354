@@ -18,6 +18,7 @@
     <!-- Custom styles for this template -->
     <link href="customerSearch.css" rel="stylesheet">
 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
 
   <body>
@@ -173,17 +174,9 @@ var myArray;
 /*on load, it loads all the avilable data*/
 function getData(){
 
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://cmpt354.herokuapp.com/searchAlbums";
-
-  xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        myArray = JSON.parse(this.responseText);
-        display(myArray)
-      }
-  };
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
+  $.get("https://cmpt354.herokuapp.com/searchAlbums?", function(data, status){
+        display(JSON.parse(data))
+    });
 
 
 
@@ -235,20 +228,20 @@ function submit(){
 
   var filter1Val = filter1.options[filter1.selectedIndex].value;
   var filter2Val = filter2.options[filter2.selectedIndex].value;
+  if (filter2Val != "DESC"){
+    filter2Val = "ASC";
+  } 
   var myInputVal = myInput.value;
 
-  var rest;
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://cmpt354.herokuapp.com/searchAlbums?name="+myInputVal+",id=-1,order=" + filter2Val + ",count=-1";
+  var array = myInput.value.split(" ");
+  var first = array[0];
+  var second = array[1];
+  
+  var searchValue = "name="+first + "+" + second  + "&order=" + filter2Val;
 
-  xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        myArray = JSON.parse(this.responseText);
-        display(myArray)
-      }
-  };
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
-
+  
+  $.get("https://cmpt354.herokuapp.com/searchAlbums?"+searchValue, function(data, status){
+        display(JSON.parse(data))
+    });
 };
 </script>
