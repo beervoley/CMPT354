@@ -70,29 +70,29 @@
       </div>
 
       <div class="dropdown" style="top: 10px;">
-          <select>
+          <select  id="filter1">
             <option selected>Choose a any filter</option>
-            <option value="3">Three</option>
-            <option value="1">One</option>
-            <option value="0">Zero</option>
-            <option value="2">Two</option>
-            <option value="8">Eight</option>
+            <option >Three</option>
+            <option >One</option>
+            <option >Zero</option>
+            <option >Two</option>
+            <option >Eight</option>
           </select>
         </div>
 
         <div class="dropdown"  style="top: 10px;">
-          <select>
+          <select  id="filter2">
             <option selected>Choose a price filter</option>
-            <option value="3">Three</option>
-            <option value="1">One</option>
-            <option value="0">Zero</option>
-            <option value="2">Two</option>
-            <option value="8">Eight</option>
+            <option >Kunal</option>
+            <option >gulati</option>
+            <option >Zero</option>
+            <option >Two</option>
+            <option >Eight</option>
           </select>
         </div>
 
         <div class="dropdown" style="top: 10px;">
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" onclick="submit();">
 
         </div>
 <!-- 
@@ -149,10 +149,6 @@
 <script>
 
 function myFunction() {
-}
-
-function myFunction() {
-      document.getElementById("myDropdown").classList.toggle("show");
 
     var input, filter, ul, li, a, i;
     input = document.getElementById("myInput");
@@ -167,5 +163,45 @@ function myFunction() {
             li[i].style.display = "none";
         }
     }
-}
+};
+
+function submit(){
+  var myInput = document.getElementById("myInput");
+  var filter1 = document.getElementById("filter1");
+  var filter2 = document.getElementById("filter2");
+
+
+  var filter1Val = filter1.options[filter1.selectedIndex].value;
+  var filter2Val = filter2.options[filter2.selectedIndex].value;
+  var myInputVal = myInput.value;
+
+};
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
