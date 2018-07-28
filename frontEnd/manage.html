@@ -156,9 +156,20 @@ var myArray;
 /*get the required data from the database*/
 /*on load, it loads all the avilable data*/
 function getData(){
-   myArray = [ { "AlbumName": "Alive", "AlbumYear": 1998, "Price": 9.99, "ArtistName": "Daft Punk" }, { "AlbumName": "The Time Machine", "AlbumYear": 2004, "Price": 5.99, "ArtistName": "1200 Micrograms" }, { "AlbumName": "Lil Pump", "AlbumYear": 2017, "Price": 19.99, "ArtistName": "Lil Pump" }, { "AlbumName": "Scary Monsters and Nice Sprites", "AlbumYear": 2010, "Price": 5.99, "ArtistName": "Skrillex" }, { "AlbumName": "Free The Universe", "AlbumYear": 2013, "Price": 6.99, "ArtistName": "Major Lazer" }, { "AlbumName": "New Socks", "AlbumYear": 2005, "Price": 15.71, "ArtistName": "Skrillex" }, { "AlbumName": "Quadrophenia", "AlbumYear": 1973, "Price": 19.99, "ArtistName": "The Who" }, { "AlbumName": "Dark Side of The Moon", "AlbumYear": 1973, "Price": 9.99, "ArtistName": "Pink Floyd" }, { "AlbumName": "Sgt Peppers Lonely Hearts Club Band", "AlbumYear": 1967, "Price": 15.0, "ArtistName": "The Beatles" }, { "AlbumName": "Highway To Hell", "AlbumYear": 1979, "Price": 9.5, "ArtistName": "ACDC" }, { "AlbumName": "LA Woman", "AlbumYear": 1971, "Price": 19.99, "ArtistName": "The Doors" } ];
-  
-    display(myArray);
+
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://cmpt354.herokuapp.com/searchAlbums";
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myArray = JSON.parse(this.responseText);
+        display(myArray)
+      }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+
+
 };
 
 
