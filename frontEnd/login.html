@@ -40,7 +40,6 @@
         </div>
       </div>
     </nav>
-
   
 
   <div class="container">
@@ -56,7 +55,7 @@
           <div class="form-group"  style="margin-top: 30px; margin-bottom: 30px; width: 80%;">
               <input type="email" class="form-control" id="inputEmail" placeholder="Email Address"  style="width: 100%; text-align: center;">
           </div>
-          <button type="submit"  class="btn btn-primary" id="submit" style="width: 90px;">Login</button>
+          <button type="submit"  class="btn btn-primary" id="submit" style="width: 90px;" onclick="check(document.getElementById('inputEmail').value)">Login</button>
         </form>
       </div>
     </div>
@@ -69,7 +68,66 @@
 
 
 
+<script type="text/javascript">
+  
 
+
+window.onload = function() {
+  getManager();
+  getStoreTechnician();
+};
+
+var myArrayManger;
+var myArrayTechnician;
+
+/*get the required data from the database*/
+/*on load, it loads all the avilable data*/
+function getManager(){
+
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://cmpt354.herokuapp.com/searchManagers";
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myArrayManger = JSON.parse(this.responseText);
+        display(myArray)
+      }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+
+};
+
+function getStoreTechnician(){
+
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://cmpt354.herokuapp.com/searchStoreTechnicians";
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myArrayTechnician = JSON.parse(this.responseText);
+      }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+};
+
+
+function check(data){
+      console.log(myArrayManger);
+
+  if (myArrayManger.contains(data)){
+    window.location = '/manager.html';
+  }
+  else if (myArrayTechnician.contains(data)){
+    window.location = '/manager.html';
+  }
+  else{
+    alert("Wrong email");
+  }
+};
+
+</script>
 
 
 
