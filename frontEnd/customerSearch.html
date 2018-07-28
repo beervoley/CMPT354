@@ -48,7 +48,7 @@
 
       <div class="row">
       
-      <div class="dropdown"">
+      <div class="dropdown">
         <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
         <ul id="myUL" id="myDropdown" style="display: none;">
           <li><a href="#">Adele</a></li>
@@ -77,11 +77,8 @@
         <div class="dropdown"  style="top: 10px;">
           <select  id="filter2">
             <option selected>Choose a price filter</option>
-            <option >Kunal</option>
-            <option >gulati</option>
-            <option >Zero</option>
-            <option >Two</option>
-            <option >Eight</option>
+            <option >ASC</option>
+            <option >DESC</option>
           </select>
         </div>
 
@@ -157,7 +154,7 @@
     <!-- /.container -->
 
 
-
+  <br>
   </body>
 
 </html>
@@ -239,5 +236,19 @@ function submit(){
   var filter1Val = filter1.options[filter1.selectedIndex].value;
   var filter2Val = filter2.options[filter2.selectedIndex].value;
   var myInputVal = myInput.value;
+
+  var rest;
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://cmpt354.herokuapp.com/searchAlbums?name="+myInputVal+",id=-1,order=" + filter2Val + ",count=-1";
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myArray = JSON.parse(this.responseText);
+        display(myArray)
+      }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+
 };
 </script>
