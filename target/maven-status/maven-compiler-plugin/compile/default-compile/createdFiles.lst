@@ -1,0 +1,11 @@
+API/Model/Artist.class
+API/WebUtils/Controller.class
+API/Model/Album.class
+API/Model/Customer.class
+API/Application.class
+API/DBCommunication/DBCommun.class
+API/DBCommunication/Queries.class
+API/Model/Receipt.class
+API/Model/StoreTechnician.class
+API/Model/Manager.class
+API/WebUtils/RequestHandler.class

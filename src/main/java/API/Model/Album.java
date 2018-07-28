@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Album {
 
-    private transient int AlbumID;
+    private int AlbumID;
     private String AlbumName;
     private int AlbumYear;
     private transient int ArtistID;
