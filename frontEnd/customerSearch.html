@@ -16,7 +16,6 @@
     <link  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js">
     
     <!-- Custom styles for this template -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
     <link href="customerSearch.css" rel="stylesheet">
 
   </head>
@@ -129,9 +128,10 @@
             <div style="overflow-x:auto;">
             <table >
               <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Album Name</th>
+                <th>Album Year</th>
                 <th>Price</th>
+                <th>Artist Name</th>
               </tr>
               <tbody id="tableOverall">
               <tr>
@@ -157,9 +157,6 @@
     <!-- /.container -->
 
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   </body>
 
@@ -171,38 +168,57 @@
 toggle between hiding and showing the dropdown content */
 window.onload = function() {
   getData();
-  // dynamicallyPopulate("kunak");
+   dynamicallyPopulate("kunak");
 };
 
+var myArray;
 /*get the required data from the database*/
 /*on load, it loads all the avilable data*/
 function getData(){
-  var data;
-  dynamicallyPopulate(data);
+
+   myArray = [ { "AlbumName": "Alive", "AlbumYear": 1998, "Price": 9.99, "ArtistName": "Daft Punk" }, { "AlbumName": "The Time Machine", "AlbumYear": 2004, "Price": 5.99, "ArtistName": "1200 Micrograms" }, { "AlbumName": "Lil Pump", "AlbumYear": 2017, "Price": 19.99, "ArtistName": "Lil Pump" }, { "AlbumName": "Scary Monsters and Nice Sprites", "AlbumYear": 2010, "Price": 5.99, "ArtistName": "Skrillex" }, { "AlbumName": "Free The Universe", "AlbumYear": 2013, "Price": 6.99, "ArtistName": "Major Lazer" }, { "AlbumName": "New Socks", "AlbumYear": 2005, "Price": 15.71, "ArtistName": "Skrillex" }, { "AlbumName": "Quadrophenia", "AlbumYear": 1973, "Price": 19.99, "ArtistName": "The Who" }, { "AlbumName": "Dark Side of The Moon", "AlbumYear": 1973, "Price": 9.99, "ArtistName": "Pink Floyd" }, { "AlbumName": "Sgt Peppers Lonely Hearts Club Band", "AlbumYear": 1967, "Price": 15.0, "ArtistName": "The Beatles" }, { "AlbumName": "Highway To Hell", "AlbumYear": 1979, "Price": 9.5, "ArtistName": "ACDC" }, { "AlbumName": "LA Woman", "AlbumYear": 1971, "Price": 19.99, "ArtistName": "The Doors" } ];
+  
+
+  // var xmlhttp = new XMLHttpRequest();
+  // var url = "https://cmpt354.herokuapp.com/searchCustomers";
+
+  // xmlhttp.onreadystatechange = function() {
+  //     if (this.readyState == 4 && this.status == 200) {
+  //      myArray = JSON.parse(this.responseText);
+     // display(myArray);
+  //     }
+  // };
+  // xmlhttp.open("GET", url, true);
+  // xmlhttp.send();
+
+/* Complete request and delete this*/
+      display(myArray);
+
+
 };
+
+
+
 
 /*Dynamically populate the Table*/
-function dynamicallyPopulate(data){
+  function display(myArray) {
+        var length = myArray.length;
 
-  // var myTableDiv = document.getElementById("metric_results")
-  var table = document.getElementById('TABLE')
-  var tableBody = document.getElementById('tableOverall')
+        console.log(myArray)
+        var htmltext = "";
 
-  /* replace 10 with the length of data argument*/
-  for (i = 0; i < 5; i++) {
-    var tr = document.createElement('TR');
-    for (j = 0; j < 3; j++) { 
-        var td = document.createElement('TD')
-        td.appendChild(document.createTextNode("Jill"));
-        tr.appendChild(td)
+        for (var i = 0; i < length; i++) {
+            htmltext += "<tr id='table"+i+"'><td>"
+            +myArray[i].AlbumName+
+            "</td><td>"
+            +myArray[i].AlbumYear+
+            "</td><td>"
+            +myArray[i].Price+
+            "</td><td>"
+            +myArray[i].ArtistName+"</td></tr>";
+        }
+        document.getElementById("tableOverall").innerHTML = htmltext;
     }
-
-    tableBody.appendChild(tr);
-  }
-
-};
-
-
 
 function myFunction() {
 
@@ -220,9 +236,6 @@ function myFunction() {
         }
     }
 };
-
-
-
 
 /* get searchbar and dropdown arguments */
 function submit(){
