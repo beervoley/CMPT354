@@ -72,8 +72,8 @@
 
       <div class="dropdown" style="top: 10px;">
           <select  id="filter1">
-            <option selected>Do not count</option>
-            <option >Count</option>
+            <option selected>Do Not Count Number of Albums</option>
+            <option >Count Number of Albums</option>
           </select>
         </div>
 
@@ -104,11 +104,11 @@
           <div style="overflow-x:auto;">
             <table >
               <tr>
-                <th>Album Name</th>
-                <th>Album year</th>
-                <th>Price</th>
-                <th>Artist</th>
-                <th>Update/Delete</th>
+                <th id="1">Album Name</th>
+                <th id="2">Album year</th>
+                <th id="3">Price</th>
+                <th id="4">Artist</th>
+                <th id="5">Update/Delete</th>
               </tr>
               <tbody id="tableOverall">
                               <tr>
@@ -187,7 +187,7 @@ function updateArtist(currentName,updateName){
   var id;
 
   // iterate over each element in the array
-  for (var i = 0; i < myArtist.length; i++){
+  for (var i = 1; i < myArtist.length; i++){
     // look for the entry with a matching `code` value
     if (myArtist[i].ArtistName == currentName){
       id= myArtist[i].ArtistID;
@@ -305,7 +305,7 @@ function displayCount(data){
     console.log(data);
 
         var htmltext = "";
-        htmltext += "<tr><td> Number of Alumbs</td><td>"
+        htmltext += "<tr><td> Number of Albums</td><td>"
             +data+
             "</td><td></td><td></td><td></td>"
         document.getElementById("tableOverall").innerHTML = htmltext;
@@ -323,13 +323,28 @@ function submit(){
   var filter2Val = filter2.options[filter2.selectedIndex].value;
   var count = false;
 
-  if (filter1Val == "Count"){
+  if (filter1Val == "Count Number of Albums"){
+    var x;
+    for (var i = 1; i <6; i++) {
+      x=document.getElementById(i);  
+      x.style.visibility='hidden';  
+    }
       $.get("https://cmpt354.herokuapp.com/searchAlbums?count=true", function(data, status){
         displayCount(JSON.parse(data))
-
       });
     return 0;
   }
+  else{
+    var x1;
+      for (var i = 1; i <6; i++) {
+        x1=document.getElementById(i);  
+        x1.style.visibility='visible';  
+      }
+
+        //display(myArray);
+
+  }
+
 
   if (filter2Val != "DESC"){
     filter2Val = "ASC";
