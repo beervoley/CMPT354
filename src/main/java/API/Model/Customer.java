@@ -63,9 +63,14 @@ public class Customer {
         List<Customer> customerList = new ArrayList<>();
         try{
             while (rset.next()) {
-                customerList.add(new Customer(rset.getInt("CustomerID"),
-                        rset.getInt("Number of Purchases")
-                ));
+                if(rset.getInt("CustomerID") == 0) {
+                    continue;
+                } else {
+                    customerList.add(new Customer(rset.getInt("CustomerID"),
+                            rset.getInt("Number of Purchases")
+                    ));
+                }
+
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             return gson.toJson(customerList);
