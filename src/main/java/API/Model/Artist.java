@@ -31,9 +31,13 @@ public class Artist {
         List<Artist> artistList = new ArrayList<>();
         try{
             while (rset.next()) {
-                artistList.add(new Artist(rset.getInt("ArtistID"),
-                        rset.getString("ArtistName").trim())
-                );
+                if(rset.getInt("ArtistID") == 0) {
+                    continue;
+                } else {
+                    artistList.add(new Artist(rset.getInt("ArtistID"),
+                            rset.getString("ArtistName").trim())
+                    );
+                }
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             return gson.toJson(artistList);

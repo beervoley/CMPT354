@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Album {
 
-    private transient int AlbumID;
+    private int AlbumID;
     private String AlbumName;
     private int AlbumYear;
     private transient int ArtistID;
@@ -64,12 +64,16 @@ public class Album {
         List<Album> albumList = new ArrayList<>();
         try {
             while (rset.next()) {
-                albumList.add(new Album(rset.getString("AlbumName").trim(),
-                        rset.getInt("AlbumYear"),
-                        rset.getFloat("Price"),
-                        rset.getString("ArtistName").trim(),
-                        rset.getInt("AlbumID"))
-                );
+                if(rset.getInt("AlbumID") == 0) {
+                    continue;
+                } else {
+                    albumList.add(new Album(rset.getString("AlbumName").trim(),
+                            rset.getInt("AlbumYear"),
+                            rset.getFloat("Price"),
+                            rset.getString("ArtistName").trim(),
+                            rset.getInt("AlbumID")));
+                }
+
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             return gson.toJson(albumList);
