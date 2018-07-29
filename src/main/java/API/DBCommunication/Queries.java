@@ -188,6 +188,10 @@ public class Queries {
         return String.format("DELETE FROM Artist " +
                 "WHERE ArtistID = %d;" ,id);
     }
+    public static String getIDbyAlbumName(String name){
+        return String.format("SELECT AlbumID FROM Album " +
+                "WHERE AlbumName = %s",name);
+    }
 
 
 
