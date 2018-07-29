@@ -64,16 +64,7 @@
         </ul>
       </div>
 
-      <div class="dropdown" style="top: 10px;">
-          <select  id="filter1">
-            <option selected>Choose a any filter</option>
-            <option >Three</option>
-            <option >One</option>
-            <option >Zero</option>
-            <option >Two</option>
-            <option >Eight</option>
-          </select>
-        </div>
+
 
         <div class="dropdown"  style="top: 10px;">
           <select  id="filter2">
@@ -133,9 +124,10 @@
               </tr>
               <tbody id="tableOverall">
               <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
+                <td>Wait </td>
+                <td>for</td>
+                <td>it to</td>
+                <td>Load</td>
               </tr>
               </tbody >
 
@@ -186,7 +178,7 @@ $.get("https://cmpt354.herokuapp.com/searchAlbums?", function(data, status){
         console.log(myArray)
         var htmltext = "";
 
-        for (var i = 0; i < length; i++) {
+        for (var i = 1; i < length; i++) {
             htmltext += "<tr id='table"+i+"'><td>"
             +myArray[i].AlbumName+
             "</td><td>"
@@ -219,11 +211,9 @@ function myFunction() {
 /* get searchbar and dropdown arguments */
 function submit(){
   var myInput = document.getElementById("myInput");
-  var filter1 = document.getElementById("filter1");
   var filter2 = document.getElementById("filter2");
 
 
-  var filter1Val = filter1.options[filter1.selectedIndex].value;
   var filter2Val = filter2.options[filter2.selectedIndex].value;
   if (filter2Val != "DESC"){
     filter2Val = "ASC";

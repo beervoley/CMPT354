@@ -42,8 +42,9 @@
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="login.html">Employees</a>
+              <a class="nav-link" href="manageCustomer.html">Customer</a>
             </li>
+
           </ul>
         </div>
       </div>
@@ -71,24 +72,19 @@
 
       <div class="dropdown" style="top: 10px;">
           <select  id="filter1">
-            <option selected>Choose a any filter</option>
-            <option >Albums</option>
-            <option >Customers</option>
-            <option >Managers</option>
-            <option >StoreTechnicians</option>
-            <option >Receipts</option>
-            <option >Artists</option>
+            <option selected>Do not count</option>
+            <option >Count</option>
           </select>
         </div>
 
-        <!-- <div class="dropdown"  style="top: 10px;">
+        <div class="dropdown"  style="top: 10px;">
           <select  id="filter2">
             <option selected>Choose a price filter</option>
             <option >ASC</option>
             <option >DESC</option>
 
           </select>
-        </div> -->
+        </div>
 
         <div class="dropdown" style="top: 10px;">
             <input type="submit" value="Submit" id="submit" onclick="submit();">
@@ -116,11 +112,11 @@
               </tr>
               <tbody id="tableOverall">
                               <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td>Wait</td>
+                <td>For</td>
+                <td>it</td>
+                <td>to</td>
+                <td>Load</td>
 
               </tr>
               </tbody >
@@ -147,6 +143,7 @@
 
 window.onload = function() {
   getData();
+  getArtist();
   // dynamicallyPopulate("kunak");
 };
 
@@ -233,7 +230,7 @@ function display(myArray) {
         console.log(myArray)
         var htmltext = "";
 
-        for (var i = 0; i < length; i++) {
+        for (var i = 1; i < length; i++) {
             htmltext += "<tr id='table"+i+"'><td>"
             +myArray[i].AlbumName+
             "</td><td>"
@@ -304,7 +301,15 @@ function myFunction() {
     }
 };
 
+function displayCount(data){
+    console.log(data);
 
+        var htmltext = "";
+        htmltext += "<tr><td> Number of Alumbs</td><td>"
+            +data+
+            "</td><td></td><td></td><td></td>"
+        document.getElementById("tableOverall").innerHTML = htmltext;
+};
 
 
 /* get searchbar and dropdown arguments */
@@ -315,22 +320,32 @@ function submit(){
 
 
   var filter1Val = filter1.options[filter1.selectedIndex].value;
+  var filter2Val = filter2.options[filter2.selectedIndex].value;
+  var count = false;
+
+  if (filter1Val == "Count"){
+      $.get("https://cmpt354.herokuapp.com/searchAlbums?count=true", function(data, status){
+        displayCount(JSON.parse(data))
+
+      });
+    return 0;
+  }
+
+  if (filter2Val != "DESC"){
+    filter2Val = "ASC";
+  } 
   var myInputVal = myInput.value;
 
-  var rest;
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://cmpt354.herokuapp.com/searchAlbums?name="+myInputVal+",id=-1,order=" + filter1Val + ",count=-1";
+  var array = myInput.value.split(" ");
+  var first = array[0];
+  var second = array[1];
+  
+  var searchValue = "name="+first + "+" + second  + "&order=" + filter2Val;
 
-  xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        myArray = JSON.parse(this.responseText);
-        display(myArray)
-      }
-  };
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
-
-  display(myArray);
+  
+  $.get("https://cmpt354.herokuapp.com/searchAlbums?"+searchValue, function(data, status){
+        display(JSON.parse(data))
+    });
 };
 
 
