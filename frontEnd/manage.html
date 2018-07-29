@@ -230,7 +230,7 @@ function display(myArray) {
         console.log(myArray)
         var htmltext = "";
 
-        for (var i = 1; i < length; i++) {
+        for (var i = 0; i < length; i++) {
             htmltext += "<tr id='table"+i+"'><td>"
             +myArray[i].AlbumName+
             "</td><td>"
@@ -310,6 +310,32 @@ function displayCount(data){
             "</td><td></td><td></td><td></td>"
         document.getElementById("tableOverall").innerHTML = htmltext;
 };
+
+
+// function displayOrder(myArray, filter2Val){
+//       var length = myArray.length;
+//       var i =1;
+
+//       if (filter2Val == "DESC"){
+//           length = length -1;
+//           i = 0;
+//       }
+//         console.log(myArray)
+//         var htmltext = "";
+
+//         for (; i < length; i++) {
+//             htmltext += "<tr id='table"+i+"'><td>"
+//             +myArray[i].AlbumName+
+//             "</td><td>"
+//             +myArray[i].AlbumYear+
+//             "</td><td>"
+//             +myArray[i].Price+
+//             "</td><td>"
+//             +myArray[i].ArtistName+
+//             "</td><td><button onclick='edit("+i+")'>Edit</button><button onclick='remove("+i+")'>Remove</button></td></tr>";
+//         }
+//         document.getElementById("tableOverall").innerHTML = htmltext;
+// };
 
 
 /* get searchbar and dropdown arguments */

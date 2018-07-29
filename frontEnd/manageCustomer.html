@@ -204,7 +204,7 @@ function display(myArray, purchaseList, allItem) {
         }
         else if (purchaseList == ""){
           x.style.visibility='hidden';  
-          for (var i = 1; i < length; i++) {
+          for (var i = 0; i < length; i++) {
               htmltext += "<tr id='table"+i+"'><td>"
               +myArray[i].CustomerID+
               "</td><td>"
@@ -220,13 +220,13 @@ function display(myArray, purchaseList, allItem) {
         else{
           x.style.visibility='visible';  
 
-          for (var i = 1; i < length; i++) {
-              if (purchaseList[j] == undefined || purchaseList[j].length ==0 ){
+          for (var i = 0; i < length; i++) {
+              if (purchaseList[i] == undefined || purchaseList[j].length ==0 ){
                 temp = "0";
 
               }
               else{
-                temp = purchaseList[j].NumberOfPurchases;
+                temp = purchaseList[i].NumberOfPurchases;
                 console.log(temp);
               }
 

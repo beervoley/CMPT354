@@ -178,7 +178,7 @@ $.get("https://cmpt354.herokuapp.com/searchAlbums?", function(data, status){
         console.log(myArray)
         var htmltext = "";
 
-        for (var i = 1; i < length; i++) {
+        for (var i = 0; i < length; i++) {
             htmltext += "<tr id='table"+i+"'><td>"
             +myArray[i].AlbumName+
             "</td><td>"
@@ -228,7 +228,7 @@ function submit(){
 
   
   $.get("https://cmpt354.herokuapp.com/searchAlbums?"+searchValue, function(data, status){
-        display(JSON.parse(data))
+        displayNew(JSON.parse(data))
     });
 };
 </script>
