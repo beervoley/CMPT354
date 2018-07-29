@@ -37,13 +37,14 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
+              <a class="nav-link" href="customerSearch.html">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="login.html">Employees</a>
+              <a class="nav-link" href="manageCustomer.html">Customer</a>
             </li>
+
           </ul>
         </div>
       </div>
@@ -71,24 +72,19 @@
 
       <div class="dropdown" style="top: 10px;">
           <select  id="filter1">
-            <option selected>Choose a any filter</option>
-            <option >Albums</option>
-            <option >Customers</option>
-            <option >Managers</option>
-            <option >StoreTechnicians</option>
-            <option >Receipts</option>
-            <option >Artists</option>
+            <option selected>Do not count</option>
+            <option >Count</option>
           </select>
         </div>
 
-        <!-- <div class="dropdown"  style="top: 10px;">
+        <div class="dropdown"  style="top: 10px;">
           <select  id="filter2">
             <option selected>Choose a price filter</option>
             <option >ASC</option>
             <option >DESC</option>
 
           </select>
-        </div> -->
+        </div>
 
         <div class="dropdown" style="top: 10px;">
             <input type="submit" value="Submit" id="submit" onclick="submit();">
@@ -109,18 +105,19 @@
             <table >
               <tr>
                 <th>Album Name</th>
-                <th>Album year/th>
+                <th>Album year</th>
                 <th>Price</th>
                 <th>Artist</th>
                 <th>Update/Delete</th>
               </tr>
               <tbody id="tableOverall">
                               <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>50</td>
-                <td>Edit</td>
-                <td>Delete</td>
+                <td>Wait</td>
+                <td>For</td>
+                <td>it</td>
+                <td>to</td>
+                <td>Load</td>
+
               </tr>
               </tbody >
 
@@ -146,11 +143,26 @@
 
 window.onload = function() {
   getData();
+  getArtist();
   // dynamicallyPopulate("kunak");
 };
 
 //Make sure it stays global
 var myArray;
+var myArtist;
+
+function getArtist(){
+  var xmlhttp = new XMLHttpRequest();
+  var url = "https://cmpt354.herokuapp.com/searchArtists";
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        myArtist = JSON.parse(this.responseText);
+      }
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+};
 
 /*get the required data from the database*/
 /*on load, it loads all the avilable data*/
@@ -168,17 +180,57 @@ function getData(){
   xmlhttp.open("GET", url, true);
   xmlhttp.send();
 
-
 };
 
 
-  function display(myArray) {
+function updateArtist(currentName,updateName){
+  var id;
+
+  // iterate over each element in the array
+  for (var i = 0; i < myArtist.length; i++){
+    // look for the entry with a matching `code` value
+    if (myArtist[i].ArtistName == currentName){
+      id= myArtist[i].ArtistID;
+    }
+  }
+ console.log(currentName, id);
+
+  var xmlhttp = new XMLHttpRequest();
+  var url = 'https://cmpt354.herokuapp.com//updateArtist?id='+id+'&name='+updateName;
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("Success");
+      }
+  };
+  xmlhttp.open("POST", url, true);
+  xmlhttp.send();
+
+};
+
+function deleteAlbum(data){
+
+  var id = data["AlbumID"];
+  
+  var xmlhttp = new XMLHttpRequest();
+  var url = 'https://cmpt354.herokuapp.com//deleteAlbum?id='+id;
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log("Success");
+      }
+  };
+  xmlhttp.open("POST", url, true);
+  xmlhttp.send();
+};
+
+function display(myArray) {
         var length = myArray.length;
 
         console.log(myArray)
         var htmltext = "";
 
-        for (var i = 0; i < length; i++) {
+        for (var i = 1; i < length; i++) {
             htmltext += "<tr id='table"+i+"'><td>"
             +myArray[i].AlbumName+
             "</td><td>"
@@ -190,51 +242,46 @@ function getData(){
             "</td><td><button onclick='edit("+i+")'>Edit</button><button onclick='remove("+i+")'>Remove</button></td></tr>";
         }
         document.getElementById("tableOverall").innerHTML = htmltext;
-    }
-
-
+};
 
 function edit(indice) {
-  var htmltext = "<tr><td><input id='inputname"+indice+"' type='text' value='"
+  var htmltext = "<tr id='table"+indice+"'><td>"
             +myArray[indice].AlbumName+
-            "'></td><td><input id='inputYear"+indice+"' type='text' value='"
+            "</td><td>"
             +myArray[indice].AlbumYear+
-            "'<tr><td><input id='inputPrice"+indice+"' type='number' value='"
+            "</td><td>"
             +myArray[indice].Price+
-            "'></td><td><input id='inputArtist"+indice+"' type='text' value='"
+            "</td><td><input id='inputArtist"+indice+"' type='text' value='"
             +myArray[indice].ArtistName+
             "'></td><td><button onclick='save("+indice+")'>Save</button><button onclick='remove("+indice+")'>Remove</button></td></tr>";
         document.getElementById("table"+indice).innerHTML = htmltext; 
     }
 
 
-    function save(indice) {
-        myArray[indice].AlbumName = document.getElementById("inputname"+indice).value;
-        myArray[indice].AlbumYear = document.getElementById("inputYear"+indice).value;
-        myArray[indice].Price = document.getElementById("inputPrice"+indice).value;
-        myArray[indice].ArtistName = document.getElementById("inputArtist"+indice).value;        
+function save(indice) {
+  var currentName = myArray[indice].ArtistName;
+  myArray[indice].ArtistName = document.getElementById("inputArtist"+indice).value;        
 
+  var htmltext = "<tr id='table"+indice+"'><td>"
+    +myArray[indice].AlbumName+
+    "</td><td>"
+    +myArray[indice].AlbumYear+
+    "</td><td>"
+    +myArray[indice].Price+
+    "</td><td>"
+    +myArray[indice].ArtistName+
+    "</td><td><button onclick='edit("
+    +indice+")'>Edit</button><button onclick='remove("
+    +indice+")'>Remove</button></td></tr>";
+    document.getElementById("table"+indice).innerHTML = htmltext;
 
+    updateArtist(currentName, myArray[indice].ArtistName);
+}
 
-
-        var htmltext = "<tr id='table"+indice+"'><td>"
-            +myArray[indice].AlbumName+
-            "</td><td>"
-            +myArray[indice].AlbumYear+
-            "</td><td>"
-            +myArray[indice].Price+
-            "</td><td>"
-            +myArray[indice].ArtistName+
-            "</td><td><button onclick='edit("
-            +indice+")'>Edit</button><button onclick='remove("
-            +indice+")'>Remove</button></td></tr>";
-        document.getElementById("table"+indice).innerHTML = htmltext;
-    }
-
-  function remove(indice) {
-    console.log(myArray);
-    myArray.splice(indice, 1);
-    display(myArray);
+function remove(indice) {
+  deleteAlbum(myArray[indice]);
+  myArray.splice(indice, 1);
+  display(myArray);
 }
 
 function myFunction() {
@@ -254,7 +301,15 @@ function myFunction() {
     }
 };
 
+function displayCount(data){
+    console.log(data);
 
+        var htmltext = "";
+        htmltext += "<tr><td> Number of Alumbs</td><td>"
+            +data+
+            "</td><td></td><td></td><td></td>"
+        document.getElementById("tableOverall").innerHTML = htmltext;
+};
 
 
 /* get searchbar and dropdown arguments */
@@ -266,21 +321,35 @@ function submit(){
 
   var filter1Val = filter1.options[filter1.selectedIndex].value;
   var filter2Val = filter2.options[filter2.selectedIndex].value;
+  var count = false;
+
+  if (filter1Val == "Count"){
+      $.get("https://cmpt354.herokuapp.com/searchAlbums?count=true", function(data, status){
+        displayCount(JSON.parse(data))
+
+      });
+    return 0;
+  }
+
+  if (filter2Val != "DESC"){
+    filter2Val = "ASC";
+  } 
   var myInputVal = myInput.value;
 
-  var rest;
-  var xmlhttp = new XMLHttpRequest();
-  var url = "https://cmpt354.herokuapp.com/searchAlbums?name="+myInputVal+",id=-1,order=" + filter2Val + ",count=-1";
+  var array = myInput.value.split(" ");
+  var first = array[0];
+  var second = array[1];
+  
+  var searchValue = "name="+first + "+" + second  + "&order=" + filter2Val;
 
-  xmlhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-        myArray = JSON.parse(this.responseText);
-        display(myArray)
-      }
-  };
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
+  
+  $.get("https://cmpt354.herokuapp.com/searchAlbums?"+searchValue, function(data, status){
+        display(JSON.parse(data))
+    });
 };
+
+
+
 </script>
 
 
